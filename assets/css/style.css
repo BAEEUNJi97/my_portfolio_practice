@@ -1,7 +1,4 @@
-/* Import CSS modules */
-@import url("./reset.css");
-@import url("./variables.css");
-@import url("./components.css");
+/* All styles in one file - no dependencies */
 
 /* Reset and Base Styles */
 *,
