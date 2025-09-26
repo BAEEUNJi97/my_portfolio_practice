@@ -1,4 +1,4 @@
-// All classes in one file for simple debugging
+// 포트폴리오 메인 JavaScript
 
 // Mobile Navigation Toggle
 class MobileNavigation {
@@ -223,48 +223,6 @@ class CTAButton {
   }
 }
 
-// Touch support for mobile (optional enhancement)
-class TouchSupport {
-  constructor() {
-    this.touchStartY = 0;
-    this.touchEndY = 0;
-    this.swipeThreshold = 50;
-    this.init();
-  }
-
-  init() {
-    document.addEventListener("touchstart", (e) => this.handleTouchStart(e), {
-      passive: true,
-    });
-    document.addEventListener("touchend", (e) => this.handleTouchEnd(e), {
-      passive: true,
-    });
-  }
-
-  handleTouchStart(e) {
-    this.touchStartY = e.changedTouches[0].screenY;
-  }
-
-  handleTouchEnd(e) {
-    this.touchEndY = e.changedTouches[0].screenY;
-    this.handleSwipe();
-  }
-
-  handleSwipe() {
-    const diff = this.touchStartY - this.touchEndY;
-
-    if (Math.abs(diff) > this.swipeThreshold) {
-      if (diff > 0) {
-        // Swipe up - could be used for navigation
-        console.log("Swipe up detected");
-      } else {
-        // Swipe down - could be used for navigation
-        console.log("Swipe down detected");
-      }
-    }
-  }
-}
-
 // Initialize all components
 document.addEventListener("DOMContentLoaded", () => {
   // Navigation
@@ -278,5 +236,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Other components
   new CTAButton();
-  new TouchSupport();
 });

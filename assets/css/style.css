@@ -1,4 +1,17 @@
-/* All styles in one file - no dependencies */
+/* 포트폴리오 통합 스타일시트 */
+
+/* CSS 변수 정의 */
+:root {
+  --font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  --primary-color: #38bdf8;
+  --primary-dark: #0ea5e9;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --bg-primary: #ffffff;
+  --border-glass: rgba(125, 211, 252, 0.2);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 /* Reset and Base Styles */
 *,
@@ -722,9 +735,32 @@ body::before {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   line-height: 1.6;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.project-period {
+  font-size: 0.85rem !important;
+  color: rgba(56, 189, 248, 1) !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.8rem !important;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5) !important;
+}
+
+.project-tech {
+  font-size: 0.9rem !important;
+  color: rgba(125, 211, 252, 1) !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.8rem !important;
+}
+
+.project-features {
+  font-size: 0.85rem !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 400 !important;
+  margin-bottom: 1.2rem !important;
+  line-height: 1.5 !important;
 }
 
 .project-links {
@@ -793,16 +829,139 @@ body::before {
   box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15);
 }
 
-.info-icon {
-  font-size: 2.5rem;
+/* Custom Monochrome Icons */
+.info-icon-custom {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  background: #6b7280;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  position: relative;
+}
+
+.info-icon-custom::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background: white;
+  position: absolute;
+}
+
+/* User Icon */
+.user-icon::before {
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  top: 12px;
+}
+
+.user-icon::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  width: 28px;
+  height: 20px;
+  background: white;
+  border-radius: 14px 14px 0 0;
+}
+
+/* Calendar Icon */
+.calendar-icon::before {
+  border-radius: 3px;
+  width: 20px;
+  height: 16px;
+  top: 18px;
+}
+
+.calendar-icon::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  width: 24px;
+  height: 4px;
+  background: #6b7280;
+  border-radius: 2px;
+}
+
+/* Location Icon */
+.location-icon::before {
+  border-radius: 50% 50% 50% 0;
+  width: 18px;
+  height: 20px;
+  top: 16px;
+  transform: rotate(-45deg);
+}
+
+.location-icon::after {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: 26px;
+  width: 8px;
+  height: 8px;
+  background: #6b7280;
+  border-radius: 50%;
+  transform: rotate(-45deg);
+}
+
+/* Phone Icon */
+.phone-icon::before {
+  border-radius: 4px;
+  width: 14px;
+  height: 22px;
+  top: 15px;
+}
+
+.phone-icon::after {
+  content: "";
+  position: absolute;
+  bottom: 18px;
+  width: 8px;
+  height: 2px;
+  background: #6b7280;
+  border-radius: 1px;
+}
+
+/* Email Icon */
+.email-icon::before {
+  border-radius: 2px;
+  width: 24px;
+  height: 16px;
+  top: 18px;
+}
+
+.email-icon::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 8px solid #6b7280;
+}
+
+/* LinkedIn Icon */
+.linkedin-icon::before {
+  border-radius: 3px;
+  width: 20px;
+  height: 20px;
+  top: 16px;
+}
+
+.linkedin-icon::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 22px;
+  width: 16px;
+  height: 2px;
+  background: #6b7280;
+  border-radius: 1px;
 }
 
 .info-content h3 {
@@ -873,10 +1032,61 @@ body::before {
   box-shadow: 0 25px 50px rgba(56, 189, 248, 0.2);
 }
 
-.archiving-icon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
+/* Archiving Custom Icons */
+.archiving-icon-custom {
+  width: 80px;
+  height: 80px;
+  background: #6b7280;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  position: relative;
   animation: iconBounce 2s ease-in-out infinite;
+}
+
+.archiving-icon-custom::before {
+  content: "";
+  background: white;
+  position: absolute;
+}
+
+/* GitHub Icon */
+.github-icon::before {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.github-icon::after {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: 32px;
+  width: 16px;
+  height: 8px;
+  background: #6b7280;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Blog Icon */
+.blog-icon::before {
+  width: 32px;
+  height: 40px;
+  border-radius: 4px;
+  top: 16px;
+}
+
+.blog-icon::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: 28px;
+  width: 24px;
+  height: 2px;
+  background: #6b7280;
+  box-shadow: 0 6px 0 #6b7280, 0 12px 0 #6b7280, 0 18px 0 #6b7280;
 }
 
 .archiving-info h3 {
@@ -1589,10 +1799,96 @@ body::before {
     font-weight: 500;
   }
 
-  .info-icon {
+  .info-icon-custom {
     width: 50px;
     height: 50px;
-    font-size: 2rem;
+  }
+
+  .info-icon-custom::before {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Mobile User Icon */
+  .user-icon::before {
+    width: 14px;
+    height: 14px;
+    top: 10px;
+  }
+
+  .user-icon::after {
+    width: 24px;
+    height: 16px;
+    bottom: 6px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  /* Mobile Calendar Icon */
+  .calendar-icon::before {
+    width: 16px;
+    height: 14px;
+    top: 15px;
+  }
+
+  .calendar-icon::after {
+    width: 20px;
+    height: 3px;
+    top: 12px;
+  }
+
+  /* Mobile Location Icon */
+  .location-icon::before {
+    width: 14px;
+    height: 16px;
+    top: 13px;
+  }
+
+  .location-icon::after {
+    top: 18px;
+    left: 21px;
+    width: 6px;
+    height: 6px;
+  }
+
+  /* Mobile Phone Icon */
+  .phone-icon::before {
+    width: 12px;
+    height: 18px;
+    top: 13px;
+  }
+
+  .phone-icon::after {
+    width: 6px;
+    height: 2px;
+    bottom: 15px;
+  }
+
+  /* Mobile Email Icon */
+  .email-icon::before {
+    width: 20px;
+    height: 14px;
+    top: 15px;
+  }
+
+  .email-icon::after {
+    top: 15px;
+    left: 15px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 7px solid #6b7280;
+  }
+
+  /* Mobile LinkedIn Icon */
+  .linkedin-icon::before {
+    width: 16px;
+    height: 16px;
+    top: 14px;
+  }
+
+  .linkedin-icon::after {
+    top: 17px;
+    left: 18px;
+    width: 14px;
   }
 
   .archiving-grid {
@@ -1694,6 +1990,23 @@ body::before {
     color: rgba(255, 255, 255, 0.95);
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
     line-height: 1.5;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-period {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .project-tech {
+    font-size: 0.8rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .project-features {
+    font-size: 0.75rem !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.4 !important;
   }
 
   .project-links {
@@ -1798,6 +2111,62 @@ body::before {
 .stat-item,
 .contact-item {
   will-change: transform;
+}
+
+/* Footer Styles */
+.footer {
+  background: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.1) 0%,
+    rgba(125, 211, 252, 0.05) 100%
+  );
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(125, 211, 252, 0.2);
+  padding: 3rem 0 2rem 0;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-info {
+  text-align: center;
+}
+
+.footer-copyright {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Footer Responsive Styles */
+@media (max-width: 768px) {
+  .footer {
+    padding: 2.5rem 0 1.5rem 0;
+    margin-top: 3rem;
+  }
+
+  .footer-content {
+    padding: 0 1.5rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-copyright {
+    font-size: 0.85rem;
+  }
 }
 
 /* Accessibility Improvements */

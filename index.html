@@ -127,7 +127,7 @@
             <!-- Personal Info Cards -->
             <div class="personal-info-grid">
               <div class="info-card">
-                <div class="info-icon">👤</div>
+                <div class="info-icon-custom user-icon"></div>
                 <div class="info-content">
                   <h3>이름</h3>
                   <p>배은지</p>
@@ -135,7 +135,7 @@
               </div>
 
               <div class="info-card">
-                <div class="info-icon">🎂</div>
+                <div class="info-icon-custom calendar-icon"></div>
                 <div class="info-content">
                   <h3>생년월일</h3>
                   <p>97.03.31</p>
@@ -143,7 +143,7 @@
               </div>
 
               <div class="info-card">
-                <div class="info-icon">📍</div>
+                <div class="info-icon-custom location-icon"></div>
                 <div class="info-content">
                   <h3>위치</h3>
                   <p>서울특별시</p>
@@ -151,7 +151,7 @@
               </div>
 
               <div class="info-card">
-                <div class="info-icon">📱</div>
+                <div class="info-icon-custom phone-icon"></div>
                 <div class="info-content">
                   <h3>연락처</h3>
                   <p>010-2494-2257</p>
@@ -159,7 +159,7 @@
               </div>
 
               <div class="info-card">
-                <div class="info-icon">📧</div>
+                <div class="info-icon-custom email-icon"></div>
                 <div class="info-content">
                   <h3>이메일</h3>
                   <p>eebae0331@gmail.com</p>
@@ -167,10 +167,15 @@
               </div>
 
               <div class="info-card">
-                <div class="info-icon">💼</div>
+                <div class="info-icon-custom linkedin-icon"></div>
                 <div class="info-content">
                   <h3>링크드인</h3>
-                  <p>쥬소</p>
+                  <a
+                    href="https://www.linkedin.com/in/eunji-bae-394158335/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >링크 주소</a
+                  >
                 </div>
               </div>
             </div>
@@ -228,8 +233,17 @@
               <div class="project-image">
                 <div class="project-overlay">
                   <h3>풀럿 · 작업보드+플레이리스트</h3>
-                  <p>Next.js · Supabase(RLS) · dnd-kit</p>
-                  <p>Drag&Drop 보드 · YouTube 플레이리스트</p>
+                  <p class="project-period">2025.03 – 2025.05 (개인)</p>
+                  <p>
+                    덕질하는 지인분들이랑 아침에 아티스트 노래 틀고 집중 + 일정
+                    정리를 함께 하려는 보드
+                  </p>
+                  <p class="project-tech">
+                    TypeScript · Next.js · Supabase · dnd-kit
+                  </p>
+                  <p class="project-features">
+                    dnd-kit 드래그 · YouTube 플레이리스트 · Auth/RLS
+                  </p>
                   <div class="project-links">
                     <a
                       href="https://flut-delta.vercel.app/"
@@ -250,13 +264,22 @@
               </div>
             </article>
 
-            <!-- 같이달램 -->
+            <!-- 같이달램 (최신) -->
             <article class="project-card" role="listitem">
               <div class="project-image">
                 <div class="project-overlay">
                   <h3>같이달램 · 모임 서비스</h3>
-                  <p>Next.js · Tailwind · React Query · Vercel</p>
-                  <p>모임 탐색 · 필터/검색 · 무한스크롤 · SSR</p>
+                  <p class="project-period">2025.05 – 2025.07 (개인)</p>
+                  <p>
+                    혼자 하기 싫은 날, 동네에서 가볍게 같이 할 활동을 찾는 모임
+                    서비스
+                  </p>
+                  <p class="project-tech">
+                    TypeScript · Next.js · React Query · Tailwind CSS
+                  </p>
+                  <p class="project-features">
+                    카테고리·지역·날짜 필터 · 무한스크롤 · SSR/라우팅
+                  </p>
                   <div class="project-links">
                     <a
                       href="https://gathr-six.vercel.app/"
@@ -282,8 +305,17 @@
               <div class="project-image">
                 <div class="project-overlay">
                   <h3>가라게 · 여행 코스 추천</h3>
-                  <p>React · 공공데이터 API · 카테고리 필터</p>
-                  <p>축제/공연/맛집 정보 제공</p>
+                  <p class="project-period">
+                    2024.03.29 – 2024.05.08 (팀 · 프론트엔드)
+                  </p>
+                  <p>
+                    축제·공연 동선에 맛집·시장까지 한 화면에서 보고 코스 빨리
+                    고르는 탐색 웹
+                  </p>
+                  <p class="project-tech">JavaScript · React</p>
+                  <p class="project-features">
+                    '대한민국 구석구석' 분석 후 보완점 반영 · 카테고리 기반 탐색
+                  </p>
                   <div class="project-links">
                     <a
                       href="https://github.com/JUNGSEUNGKIM/project3_frontPage"
@@ -302,8 +334,15 @@
               <div class="project-image">
                 <div class="project-overlay">
                   <h3>올라 · 100대 명산 커뮤니티</h3>
-                  <p>Node.js · AWS EC2 · Oracle</p>
-                  <p>게시판/댓글 · 검색/페이징 · 날씨 API</p>
+                  <p class="project-period">2024 (팀 · 프론트엔드)</p>
+                  <p>
+                    등산 붐 시기에 100대 명산 데이터 수집·정리 중심의 커뮤니티
+                    실험
+                  </p>
+                  <p class="project-tech">Node.js · AWS EC2 · Oracle</p>
+                  <p class="project-features">
+                    코스/후기/날씨 정보 · 검색·페이징 흐름 · 데이터 구조 설계
+                  </p>
                   <div class="project-links">
                     <a
                       href="https://github.com/JUNGSEUNGKIM/codelap_allola"
@@ -331,7 +370,7 @@
           <div class="archiving-content">
             <div class="archiving-grid">
               <div class="archiving-card">
-                <div class="archiving-icon">🐙</div>
+                <div class="archiving-icon-custom github-icon"></div>
                 <div class="archiving-info">
                   <h3>GitHub</h3>
                   <p>프로젝트 소스코드 관리</p>
@@ -347,7 +386,7 @@
               </div>
 
               <div class="archiving-card">
-                <div class="archiving-icon">📝</div>
+                <div class="archiving-icon-custom blog-icon"></div>
                 <div class="archiving-info">
                   <h3>Blog</h3>
                   <p>기술 블로그 및 학습 기록</p>
@@ -366,6 +405,18 @@
         </div>
       </section>
     </div>
+
+    <!-- Footer Section -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer-content">
+        <div class="footer-info">
+          <p class="footer-copyright">
+            © 2025. Bae Eun Ji. All rights reserved. | Thank you for visiting my
+            portfolio
+          </p>
+        </div>
+      </div>
+    </footer>
 
     <script src="assets/js/script.js"></script>
   </body>

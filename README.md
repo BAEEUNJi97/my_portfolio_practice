@@ -10,6 +10,80 @@
 - **⚡ 성능 최적화**: CSS 변수 활용, 클래스 기반 JavaScript 구조
 - **🔍 SEO 최적화**: 메타 태그, 시맨틱 HTML, 구조화된 데이터
 
+## 🚀 주요 프로젝트
+
+### 같이달램 (모임 서비스)
+
+**2025.05 – 2025.07 (개인)**
+
+혼자 하기 싫은 날, 동네에서 가볍게 같이 할 활동을 찾는 모임 서비스
+
+**주요 기능:**
+
+- 카테고리·지역·날짜 필터
+- 무한스크롤 목록
+- Next.js SSR/라우팅 기반 페이지 구성
+- React Query로 요청/캐시 흐름 연결
+
+**기술 스택:** TypeScript, Next.js, React Query, Tailwind CSS, Vercel
+
+**링크:** [Live Demo](https://gathr-six.vercel.app) | [GitHub](https://github.com/BAEEUNJi97/gathr)
+
+---
+
+### 풀럿 (작업보드 + 플레이리스트)
+
+**2025.03 – 2025.05 (개인)**
+
+덕질하는 지인분들이랑 아침에 아티스트 노래 틀고 집중 + 일정 정리를 함께 하려는 보드
+
+**주요 기능:**
+
+- dnd-kit으로 보드/카드 드래그
+- YouTube 플레이리스트 뷰
+- Supabase Auth/RLS로 기본 권한
+- 기본 오류 상태 처리
+
+**기술 스택:** TypeScript, Next.js, Supabase, dnd-kit
+
+**링크:** [Live Demo](https://flut-delta.vercel.app) | [GitHub](https://github.com/BAEEUNJi97/flut)
+
+---
+
+### 가라게 (여행 코스 추천)
+
+**2024.03.29 – 2024.05.08 (팀 · 프론트엔드)**
+
+축제·공연 동선에 맛집·시장까지 한 화면에서 보고 코스 빨리 고르는 탐색 웹
+
+**주요 기능:**
+
+- '대한민국 구석구석' 분석 후 보완점 반영(주변 상권 제공, 커뮤니티 보드)
+- 카테고리 기반 탐색
+- 로딩/빈 결과 기본 처리
+
+**기술 스택:** JavaScript, React
+
+**링크:** [GitHub](https://github.com/JUNGSEUNGKIM/project3_frontPage)
+
+---
+
+### 올라 (100대 명산 커뮤니티)
+
+**2024 (팀 · 프론트엔드)**
+
+등산 붐 시기에 100대 명산 데이터 수집·정리 중심의 커뮤니티 실험
+
+**주요 기능:**
+
+- 코스/후기/날씨 정보
+- 검색·페이징 흐름 정리
+- 데이터 목적의 구조 설계
+
+**기술 스택:** Node.js, AWS EC2, Oracle
+
+**링크:** [GitHub](https://github.com/JUNGSEUNGKIM/codelap_allola)
+
 ## 📁 프로젝트 구조
 
 ```
