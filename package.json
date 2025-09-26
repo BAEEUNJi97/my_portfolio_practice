@@ -1,0 +1,29 @@
+{
+  "name": "portfolio-eunji",
+  "version": "1.0.0",
+  "description": "배은지의 포트폴리오 웹사이트",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000 --open=/index.html",
+    "build": "echo 'Build process would go here'",
+    "lint": "echo 'Linting would go here'",
+    "format": "echo 'Formatting would go here'"
+  },
+  "keywords": [
+    "portfolio",
+    "web-developer",
+    "frontend",
+    "react",
+    "javascript"
+  ],
+  "author": "배은지",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BAEEUNJi97/portfolio"
+  },
+  "homepage": "https://baeeunji97.github.io/portfolio"
+}

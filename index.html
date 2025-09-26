@@ -3,38 +3,90 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="src/styles/style.css" />
+    <meta
+      name="description"
+      content="배은지의 포트폴리오 - 사용자 중심의 웹 개발자"
+    />
+    <meta
+      name="keywords"
+      content="포트폴리오, 웹개발자, React, Next.js, JavaScript, TypeScript"
+    />
+    <meta name="author" content="배은지" />
+    <meta property="og:title" content="배은지 포트폴리오" />
+    <meta
+      property="og:description"
+      content="사용자 입장에서 생각하는 신입 개발자 배은지의 포트폴리오"
+    />
+    <meta property="og:type" content="website" />
+    <title>배은지 포트폴리오 | 웹 개발자</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💻%3C/text%3E%3C/svg%3E"
     />
   </head>
   <body>
     <div class="container">
       <!-- Header Section -->
-      <header class="header">
-        <nav class="nav">
+      <header class="header" role="banner">
+        <nav class="nav" role="navigation" aria-label="메인 네비게이션">
           <div class="logo">
-            <h2>Portfolio</h2>
+            <h2><a href="#home" aria-label="홈으로 이동">Portfolio</a></h2>
           </div>
-          <ul class="nav-menu">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+          <ul class="nav-menu" role="menubar">
+            <li role="none">
+              <a href="#home" role="menuitem" aria-label="홈 섹션으로 이동"
+                >Home</a
+              >
+            </li>
+            <li role="none">
+              <a href="#about" role="menuitem" aria-label="소개 섹션으로 이동"
+                >About</a
+              >
+            </li>
+            <li role="none">
+              <a href="#skills" role="menuitem" aria-label="기술 섹션으로 이동"
+                >Skills</a
+              >
+            </li>
+            <li role="none">
+              <a
+                href="#projects"
+                role="menuitem"
+                aria-label="프로젝트 섹션으로 이동"
+                >Projects</a
+              >
+            </li>
+            <li role="none">
+              <a
+                href="#archiving"
+                role="menuitem"
+                aria-label="아카이빙 섹션으로 이동"
+                >Archiving</a
+              >
+            </li>
           </ul>
-          <div class="hamburger">
+          <button
+            class="hamburger"
+            aria-label="메뉴 열기/닫기"
+            aria-expanded="false"
+          >
             <span></span>
             <span></span>
             <span></span>
-          </div>
+          </button>
         </nav>
       </header>
 
       <!-- Hero Section -->
-      <section id="home" class="hero">
+      <section id="home" class="hero" role="main">
         <div class="hero-content">
           <div class="hero-text">
             <h1 class="hero-title">
@@ -45,7 +97,9 @@
               만들고 개선하며 배우는 과정을 좋아합니다.<br />
               사용하기 편한 웹을 만드는 게 목표입니다.
             </p>
-            <button class="cta-button">프로젝트 보기</button>
+            <button class="cta-button" aria-label="프로젝트 섹션으로 이동">
+              프로젝트 보기
+            </button>
           </div>
           <div class="hero-image">
             <div class="floating-card">
@@ -59,9 +113,9 @@
       </section>
 
       <!-- About Section -->
-      <section id="about" class="about">
+      <section id="about" class="about" aria-labelledby="about-title">
         <div class="section-content">
-          <h2 class="section-title">About Me</h2>
+          <h2 id="about-title" class="section-title">About Me</h2>
           <div class="about-content">
             <div class="about-text">
               <p>
@@ -69,82 +123,108 @@
                 작은 예제를 직접 구현하면서 이해를 넓히려고 노력하고 있습니다.
               </p>
             </div>
+
+            <!-- Personal Info Cards -->
+            <div class="personal-info-grid">
+              <div class="info-card">
+                <div class="info-icon">👤</div>
+                <div class="info-content">
+                  <h3>이름</h3>
+                  <p>배은지</p>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <div class="info-icon">🎂</div>
+                <div class="info-content">
+                  <h3>생년월일</h3>
+                  <p>97.03.31</p>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <div class="info-icon">📍</div>
+                <div class="info-content">
+                  <h3>위치</h3>
+                  <p>서울특별시</p>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <div class="info-icon">📱</div>
+                <div class="info-content">
+                  <h3>연락처</h3>
+                  <p>010-2494-2257</p>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <div class="info-icon">📧</div>
+                <div class="info-content">
+                  <h3>이메일</h3>
+                  <p>eebae0331@gmail.com</p>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <div class="info-icon">💼</div>
+                <div class="info-content">
+                  <h3>링크드인</h3>
+                  <p>쥬소</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Skills Section -->
-      <section id="skills" class="skills">
+      <section id="skills" class="skills" aria-labelledby="skills-title">
         <div class="section-content">
-          <h2 class="section-title">Skills</h2>
-          <div class="skills-grid">
+          <h2 id="skills-title" class="section-title">Skills</h2>
+          <div class="skills-grid" role="list" aria-label="기술 스택 목록">
             <!-- 1) Frontend / UI -->
-            <div class="skill-card">
-              <div class="skill-icon">💻</div>
+            <article class="skill-card" role="listitem">
+              <div class="skill-icon" aria-hidden="true">💻</div>
               <h3>Frontend / UI</h3>
               <p>HTML · CSS · JavaScript · TypeScript</p>
               <p>React · Next.js · Tailwind</p>
-            </div>
+            </article>
 
             <!-- 2) 인터랙션 / UX -->
-            <div class="skill-card">
-              <div class="skill-icon">🧩</div>
+            <article class="skill-card" role="listitem">
+              <div class="skill-icon" aria-hidden="true">🧩</div>
               <h3>인터랙션 / UX</h3>
               <p>dnd-kit(드래그) · 무한스크롤</p>
               <p>필터/정렬 · SSR/CSR 이해</p>
-            </div>
+            </article>
 
             <!-- 3) 데이터 · 인증 · 연동 -->
-            <div class="skill-card">
-              <div class="skill-icon">🔗</div>
+            <article class="skill-card" role="listitem">
+              <div class="skill-icon" aria-hidden="true">🔗</div>
               <h3>데이터 · 인증 · 연동</h3>
               <p>Supabase(Auth/RLS) · REST API</p>
               <p>SQL 기초 · Node.js(기초)</p>
-            </div>
+            </article>
 
             <!-- 4) 배포 · 테스트 · 협업 -->
-            <div class="skill-card">
-              <div class="skill-icon">🚀</div>
+            <article class="skill-card" role="listitem">
+              <div class="skill-icon" aria-hidden="true">🚀</div>
               <h3>배포 · 테스트 · 협업</h3>
               <p>Vercel · Git/GitHub</p>
               <p>React Query · Jest · RTL</p>
-            </div>
+            </article>
           </div>
         </div>
       </section>
 
       <!-- Projects Section -->
-      <section id="projects" class="projects">
+      <section id="projects" class="projects" aria-labelledby="projects-title">
         <div class="section-content">
-          <h2 class="section-title">Projects</h2>
-          <div class="projects-grid">
-            <!-- 같이달램 -->
-            <div class="project-card">
-              <div class="project-image">
-                <div class="project-overlay">
-                  <h3>같이달램 · 모임 서비스</h3>
-                  <p>Next.js · Tailwind · React Query · Vercel</p>
-                  <p>모임 탐색 · 필터/검색 · 무한스크롤 · SSR</p>
-                  <div class="project-links">
-                    <a
-                      href="https://gathr-six.vercel.app/"
-                      target="_blank"
-                      rel="noopener"
-                      >Live</a
-                    >
-                    <a
-                      href="https://github.com/BAEEUNJi97/gathr"
-                      target="_blank"
-                      rel="noopener"
-                      >GitHub</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-
+          <h2 id="projects-title" class="section-title">Projects</h2>
+          <div class="projects-grid" role="list" aria-label="프로젝트 목록">
             <!-- 풀럿 -->
-            <div class="project-card">
+            <article class="project-card" role="listitem">
               <div class="project-image">
                 <div class="project-overlay">
                   <h3>풀럿 · 작업보드+플레이리스트</h3>
@@ -154,22 +234,51 @@
                     <a
                       href="https://flut-delta.vercel.app/"
                       target="_blank"
-                      rel="noopener"
+                      rel="noopener noreferrer"
+                      aria-label="풀럿 프로젝트 라이브 사이트로 이동"
                       >Live</a
                     >
                     <a
                       href="https://github.com/BAEEUNJi97/flut"
                       target="_blank"
-                      rel="noopener"
+                      rel="noopener noreferrer"
+                      aria-label="풀럿 프로젝트 GitHub 저장소로 이동"
                       >GitHub</a
                     >
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
+
+            <!-- 같이달램 -->
+            <article class="project-card" role="listitem">
+              <div class="project-image">
+                <div class="project-overlay">
+                  <h3>같이달램 · 모임 서비스</h3>
+                  <p>Next.js · Tailwind · React Query · Vercel</p>
+                  <p>모임 탐색 · 필터/검색 · 무한스크롤 · SSR</p>
+                  <div class="project-links">
+                    <a
+                      href="https://gathr-six.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="같이달램 프로젝트 라이브 사이트로 이동"
+                      >Live</a
+                    >
+                    <a
+                      href="https://github.com/BAEEUNJi97/gathr"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="같이달램 프로젝트 GitHub 저장소로 이동"
+                      >GitHub</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </article>
 
             <!-- 가라게 -->
-            <div class="project-card">
+            <article class="project-card" role="listitem">
               <div class="project-image">
                 <div class="project-overlay">
                   <h3>가라게 · 여행 코스 추천</h3>
@@ -179,16 +288,17 @@
                     <a
                       href="https://github.com/JUNGSEUNGKIM/project3_frontPage"
                       target="_blank"
-                      rel="noopener"
+                      rel="noopener noreferrer"
+                      aria-label="가라게 프로젝트 GitHub 저장소로 이동"
                       >GitHub</a
                     >
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
 
             <!-- 올라 -->
-            <div class="project-card">
+            <article class="project-card" role="listitem">
               <div class="project-image">
                 <div class="project-overlay">
                   <h3>올라 · 100대 명산 커뮤니티</h3>
@@ -198,53 +308,65 @@
                     <a
                       href="https://github.com/JUNGSEUNGKIM/codelap_allola"
                       target="_blank"
-                      rel="noopener"
+                      rel="noopener noreferrer"
+                      aria-label="올라 프로젝트 GitHub 저장소로 이동"
                       >GitHub</a
                     >
                   </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Archiving Section -->
+      <section
+        id="archiving"
+        class="archiving"
+        aria-labelledby="archiving-title"
+      >
+        <div class="section-content">
+          <h2 id="archiving-title" class="section-title">Archiving</h2>
+          <div class="archiving-content">
+            <div class="archiving-grid">
+              <div class="archiving-card">
+                <div class="archiving-icon">🐙</div>
+                <div class="archiving-info">
+                  <h3>GitHub</h3>
+                  <p>프로젝트 소스코드 관리</p>
+                  <a
+                    href="https://github.com/BAEEUNJi97"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="archiving-link"
+                  >
+                    GitHub 프로필 보기
+                  </a>
+                </div>
+              </div>
+
+              <div class="archiving-card">
+                <div class="archiving-icon">📝</div>
+                <div class="archiving-info">
+                  <h3>Blog</h3>
+                  <p>기술 블로그 및 학습 기록</p>
+                  <a
+                    href="https://qormafuf.tistory.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="archiving-link"
+                  >
+                    블로그 보기
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <!-- Contact Section -->
-      <section id="contact" class="contact">
-        <div class="section-content">
-          <h2 class="section-title">Contact</h2>
-          <div class="contact-content">
-            <div class="contact-info">
-              <div class="contact-item">
-                <div class="contact-icon">📧</div>
-                <p>eebae0331@gmail.com</p>
-              </div>
-              <div class="contact-item">
-                <div class="contact-icon">📱</div>
-                <p>+82 10-2494-2257</p>
-              </div>
-              <div class="contact-item">
-                <div class="contact-icon">📍</div>
-                <p>Seoul, South Korea</p>
-              </div>
-            </div>
-            <div class="social-links">
-              <a href="https://github.com/BAEEUNJi97" class="social-link"
-                >GitHub</a
-              >
-              <a
-                href="https://www.linkedin.com/in/eunji-bae-394158335/"
-                class="social-link"
-                >LinkedIn</a
-              >
-              <a href="https://qormafuf.tistory.com/" class="social-link"
-                >Blog</a
-              >
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="assets/js/script.js"></script>
   </body>
 </html>
