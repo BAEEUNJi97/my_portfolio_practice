@@ -7,9 +7,13 @@
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-  const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+  const prefersReducedMotion =
+    window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
 
-  // 1) Mobile Navigation (a11y 강화: focus trap + aria + scroll lock 안정화)
+  // iOS 스크롤 잠금 보조(선택)
+  const preventTouchMove = (e) => e.preventDefault();
+
+  // 1) Mobile Navigation (a11y + focus trap + scroll lock)
   class MobileNavigation {
     constructor() {
       this.hamburger = $(".hamburger");
@@ -29,38 +33,43 @@
     init() {
       if (!this.hamburger || !this.navMenu) return;
 
-      // a11y attributes (없으면 추가)
+      // a11y attributes
       if (!this.hamburger.hasAttribute("aria-expanded")) {
         this.hamburger.setAttribute("aria-expanded", "false");
       }
-      // aria-controls: navMenu에 id가 없으면 만들어줌
       if (!this.navMenu.id) this.navMenu.id = "primary-navigation";
       this.hamburger.setAttribute("aria-controls", this.navMenu.id);
 
+      // navMenu 자체에 포커스 가능하게(링크가 없을 때 대비)
+      if (!this.navMenu.hasAttribute("tabindex")) {
+        this.navMenu.setAttribute("tabindex", "-1");
+      }
+
       this.hamburger.addEventListener("click", () => this.toggleMenu());
 
-      // 링크 클릭 시 닫기
       this.navLinks.forEach((link) => {
         link.addEventListener("click", () => this.closeMenu());
       });
 
-      // 바깥 클릭 닫기
       document.addEventListener("click", (e) => this.handleOutsideClick(e));
-
-      // 키보드 제어 (Esc + Tab focus trap)
       document.addEventListener("keydown", (e) => this.handleKeydown(e));
     }
 
     lockScroll(lock) {
-      // body overflow만 바꾸면 iOS에서 튐이 있어서 class 기반이 더 안정적임
       document.documentElement.classList.toggle("no-scroll", lock);
       document.body.classList.toggle("no-scroll", lock);
+
+      // iOS에서 메뉴 열린 상태에서 배경 스크롤/튐 방지
+      if (lock) {
+        document.addEventListener("touchmove", preventTouchMove, { passive: false });
+      } else {
+        document.removeEventListener("touchmove", preventTouchMove);
+      }
     }
 
     cacheFocusable() {
-      // 메뉴 열렸을 때 내부 포커스 가능한 요소만 잡기
       this.focusable = $$(
-        'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
         this.navMenu
       ).filter((el) => el.offsetParent !== null);
 
@@ -78,13 +87,13 @@
       this.navMenu.classList.add("active");
 
       this.hamburger.setAttribute("aria-expanded", "true");
-
       this.lockScroll(true);
 
-      // focus trap 준비
       this.cacheFocusable();
-      // 첫 포커스 이동 (메뉴 내부 링크가 있으면 그쪽)
-      (this.firstFocusable || this.navMenu).focus?.();
+
+      // 첫 포커스 이동
+      const focusTarget = this.firstFocusable || this.navMenu;
+      focusTarget?.focus?.();
     }
 
     closeMenu() {
@@ -95,10 +104,8 @@
       this.navMenu.classList.remove("active");
 
       this.hamburger.setAttribute("aria-expanded", "false");
-
       this.lockScroll(false);
 
-      // 열기 전 포커스로 복귀
       this.previousActiveElement?.focus?.();
     }
 
@@ -125,26 +132,24 @@
 
       // focus trap: Tab / Shift+Tab
       if (e.key === "Tab" && this.focusable.length) {
-        this.cacheFocusable();
+        this.cacheFocusable(); // 메뉴 안 요소가 변경될 수 있으니 갱신
 
         if (e.shiftKey) {
-          // shift+tab
           if (document.activeElement === this.firstFocusable) {
             e.preventDefault();
-            this.lastFocusable.focus();
+            this.lastFocusable?.focus?.();
           }
         } else {
-          // tab
           if (document.activeElement === this.lastFocusable) {
             e.preventDefault();
-            this.firstFocusable.focus();
+            this.firstFocusable?.focus?.();
           }
         }
       }
     }
   }
 
-  // 2) Smooth Scroll (기능 유지 + reduced motion 지원)
+  // 2) Smooth Scroll (reduced motion 지원 + 안전 처리)
   class SmoothScroll {
     constructor() {
       this.header = $(".header");
@@ -152,15 +157,15 @@
     }
 
     init() {
-      // 이벤트 위임으로 깔끔하게 (링크가 늘어나도 OK)
       document.addEventListener("click", (e) => {
         const anchor = e.target.closest('a[href^="#"]');
         if (!anchor) return;
 
-        const targetId = anchor.getAttribute("href");
-        if (!targetId || targetId === "#") return;
+        const href = anchor.getAttribute("href");
+        if (!href || href === "#") return;
 
-        const target = $(targetId);
+        // 같은 페이지 hash 이동만 처리
+        const target = $(href);
         if (!target) return;
 
         e.preventDefault();
@@ -179,7 +184,7 @@
     }
   }
 
-  // 3) Header Scroll Effect (인라인 스타일 제거 -> class 토글)
+  // 3) Header Scroll Effect (class toggle)
   class HeaderScroll {
     constructor() {
       this.header = $(".header");
@@ -201,7 +206,6 @@
         { passive: true }
       );
 
-      // 초기 상태 세팅
       this.updateHeader();
     }
 
@@ -212,7 +216,7 @@
     }
   }
 
-  // 4) Scroll Animations (입구용 포폴이라 과한 연출 ↓ + reduced motion 지원)
+  // 4) Scroll Animations (카드만, reduced motion이면 꺼짐)
   class ScrollAnimations {
     constructor() {
       if (prefersReducedMotion) return;
@@ -227,7 +231,6 @@
     }
 
     init() {
-      // 너무 많은 요소 다 넣으면 정신없어서, 딱 카드만
       const animated = $$(".project-card, .skill-card");
 
       animated.forEach((el) => {
@@ -246,21 +249,16 @@
     }
   }
 
-  // 5) Loading Animation (현재 방식은 load 후 opacity 0 → 화면 깜빡임 가능)
-  // -> JS로 body opacity를 건드리지 말고, CSS로만 처리하는 게 안전함
-  // 여기서는 "로드되면 클래스만 추가"로 변경
+  // 5) Loading Animation (깜빡임 방지: 클래스만 추가)
   class LoadingAnimation {
     constructor() {
-      this.init();
-    }
-    init() {
       window.addEventListener("load", () => {
         document.documentElement.classList.add("is-loaded");
       });
     }
   }
 
-  // 6) CTA Button handler (reduced motion 대응)
+  // 6) CTA Button handler
   class CTAButton {
     constructor() {
       this.button = $(".cta-button");
