@@ -18,6 +18,9 @@
 
   /* transition은 all 남발 금지: 필요한 곳에서만 */
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* 고정 헤더/앵커 스크롤 보정용(내용 수정돼도 레이아웃 안정) */
+  --header-offset: 96px;
 }
 
 /* =========================
@@ -48,6 +51,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+/* 고정 헤더 때문에 섹션 앵커 이동 시 제목이 가려지는 현상 방지 */
+section[id] {
+  scroll-margin-top: calc(var(--header-offset) + 16px);
 }
 
 /* 배경 그라데이션 (과하지 않게 유지) */
@@ -83,13 +91,13 @@ body::before {
   padding: 0 20px;
 }
 
-/* 섹션 spacing (단정하게) */
-.about,
-.skills,
+/* 섹션 spacing: 내용 수정으로 텍스트가 늘어나도 구분감 유지 */
 .projects,
+.skills,
+.about,
 .archiving,
 .contact {
-  margin-top: 0;
+  margin-top: 2.75rem;
 }
 
 /* =========================
@@ -262,14 +270,15 @@ html.is-loaded {
    Hero
    ========================= */
 .hero {
-  height: 100vh;
   display: flex;
   align-items: center;
-  padding: 80px 0 0 0;
+  padding: var(--header-offset) 0 2.25rem 0;
   position: relative;
   overflow: hidden;
   margin-bottom: 0;
   z-index: 1;
+  min-height: 100svh;
+  height: auto;
 }
 
 .hero-content {
@@ -638,7 +647,9 @@ html.is-loaded {
   overflow: hidden;
   transition: transform var(--transition), box-shadow var(--transition),
     border-color var(--transition);
-  height: 340px;
+  /* 텍스트 길어져도 카드가 깨지지 않도록 고정 height 제거 */
+  height: auto;
+  min-height: 340px;
   position: relative;
   box-shadow: 0 14px 34px rgba(56, 189, 248, 0.12);
   transform-style: flat; /* 3D 제거 */
@@ -659,6 +670,7 @@ html.is-loaded {
 .project-image {
   width: 100%;
   height: 100%;
+  min-height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -694,6 +706,25 @@ html.is-loaded {
   font-weight: 500;
   margin-bottom: 0.85rem;
   line-height: 1.6;
+}
+
+/* 긴 문장 때문에 카드가 지저분해 보이는 것을 방지(지원 브라우저에서만) */
+@supports (-webkit-line-clamp: 1) {
+  .project-overlay p:not(.project-period):not(.project-tech):not(.project-features) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+  }
+
+  .project-features {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+  }
 }
 
 .project-period {
@@ -752,6 +783,7 @@ html.is-loaded {
 .btn-disabled {
   opacity: 0.55;
   cursor: not-allowed;
+  pointer-events: none;
 }
 
 /* =========================
@@ -1157,6 +1189,11 @@ html.is-loaded {
   flex-wrap: wrap;
 }
 
+/* hero에서만 살짝 더 띄워주기(인라인 스타일 제거용) */
+.hero .social-links {
+  margin-top: 1.2rem;
+}
+
 .social-link {
   display: inline-block;
   padding: 1.05rem 2.2rem;
@@ -1424,7 +1461,12 @@ html.is-loaded {
   }
 
   .project-card {
-    height: 300px;
+    height: auto;
+    min-height: 300px;
+  }
+
+  .project-image {
+    min-height: 300px;
   }
 
   .project-overlay {
