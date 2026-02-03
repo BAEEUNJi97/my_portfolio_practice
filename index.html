@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO (입구 포폴 목적: 운영/유지보수, 상태/예외 강조) -->
+    <!-- SEO -->
     <meta
       name="description"
       content="운영·유지보수가 잦은 웹 서비스 환경에서 상태와 예외를 고려해 화면 구조를 설계하는 프론트엔드 주니어 개발자 포트폴리오"
     />
     <meta
       name="keywords"
-      content="프론트엔드, 포트폴리오, React, TypeScript, UI, 유지보수, 상태관리, 에러처리"
+      content="프론트엔드, 포트폴리오, React, TypeScript, UI, 유지보수, 상태관리, 에러처리, Vercel, GitHub"
     />
     <meta name="author" content="배은지" />
 
@@ -50,23 +50,43 @@
 
           <ul class="nav-menu" role="menubar">
             <li role="none">
-              <a href="#home" role="menuitem">Home</a>
+              <a href="#home" role="menuitem" aria-label="홈 섹션으로 이동"
+                >Home</a
+              >
             </li>
             <li role="none">
-              <a href="#projects" role="menuitem">Projects</a>
+              <a
+                href="#projects"
+                role="menuitem"
+                aria-label="프로젝트 섹션으로 이동"
+                >Projects</a
+              >
             </li>
             <li role="none">
-              <a href="#skills" role="menuitem">Tech</a>
+              <a href="#skills" role="menuitem" aria-label="기술 섹션으로 이동"
+                >Tech</a
+              >
             </li>
             <li role="none">
-              <a href="#about" role="menuitem">About</a>
+              <a href="#about" role="menuitem" aria-label="소개 섹션으로 이동"
+                >About</a
+              >
             </li>
             <li role="none">
-              <a href="#archiving" role="menuitem">Archiving</a>
+              <a
+                href="#archiving"
+                role="menuitem"
+                aria-label="아카이빙 섹션으로 이동"
+                >Archiving</a
+              >
             </li>
           </ul>
 
-          <button class="hamburger" aria-label="메뉴 열기/닫기" aria-expanded="false">
+          <button
+            class="hamburger"
+            aria-label="메뉴 열기/닫기"
+            aria-expanded="false"
+          >
             <span></span>
             <span></span>
             <span></span>
@@ -88,12 +108,11 @@
               기능 구현보다, 수정과 운영을 고려한 구조 설계에 강점이 있습니다.
             </p>
 
-            <!-- CTA: 프로젝트로 이동 -->
             <button class="cta-button" aria-label="프로젝트 섹션으로 이동">
-              Projects 보기
+              프로젝트 보기
             </button>
 
-            <!-- Hero Links (입구 포폴 핵심: GitHub / PDF / Email) -->
+            <!-- 입구 포폴 필수 링크 (GitHub / PDF / Email) -->
             <div class="social-links" style="margin-top: 1.2rem">
               <a
                 class="social-link"
@@ -101,13 +120,15 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub 프로필로 이동"
+                >GitHub</a
               >
-                GitHub
-              </a>
-             
-              <a class="social-link" href="mailto:eebae0331@gmail.com">
-                Email
-              </a>
+              <!-- PDF 링크는 나중에 교체 -->
+              <a class="social-link" href="#" aria-label="PDF 포트폴리오(준비중)"
+                >PDF (준비중)</a
+              >
+              <a class="social-link" href="mailto:eebae0331@gmail.com"
+                >Email</a
+              >
             </div>
           </div>
 
@@ -115,14 +136,14 @@
             <div class="floating-card">
               <div class="card-content">
                 <h3>핵심 포인트</h3>
-                <p>로딩 · 에러 · 빈 상태를 분리해 UI 흐름을 안정화</p>
+                <p>로딩 · 에러 · 빈 상태 UI를 분리해 사용자 흐름을 안정화</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Projects (3개 고정: 1)ING 2)올라라 3)emotion-diary -->
+      <!-- Projects (3개만) -->
       <section id="projects" class="projects" aria-labelledby="projects-title">
         <div class="section-content">
           <h2 id="projects-title" class="section-title">Projects</h2>
@@ -133,54 +154,61 @@
               <div class="project-image">
                 <div class="project-overlay">
                   <h3>DB 기반 웹 서비스 (개인)</h3>
-                  <p class="project-period">ING · MVP 완성 후 확장 중</p>
+                  <p class="project-period">ING · MVP 완성 · 확장 중</p>
                   <p>
                     데이터베이스와 연동된 웹 서비스로, 현재 기능 확장 및 구조 개선을
                     진행 중입니다.
                   </p>
                   <p class="project-features">
-                    인증/조회 흐름에서 로딩 · 에러 · 빈 상태 UI를 분리해 구현했습니다.
+                    인증·조회 흐름에서 로딩 · 에러 · 빈 상태를 고려해 구현했습니다.
                   </p>
 
+                  <!-- 일부러 비워두기: "준비중" 버튼 -->
                   <div class="project-links">
-                    <button class="btn-disabled" disabled aria-disabled="true">
-                      Live
-                    </button>
-                    <button class="btn-disabled" disabled aria-disabled="true">
-                      GitHub
-                    </button>
+                    <a
+                      href="#"
+                      class="btn-disabled"
+                      aria-label="Live 링크 준비중"
+                      style="pointer-events: none"
+                      >Live</a
+                    >
+                    <a
+                      href="#"
+                      class="btn-disabled"
+                      aria-label="GitHub 링크 준비중"
+                      style="pointer-events: none"
+                      >GitHub</a
+                    >
                   </div>
                 </div>
               </div>
             </article>
 
-            <!-- 2) Team - 올라라 -->
+            <!-- 2) Team Project (올라라) -->
             <article class="project-card" role="listitem">
               <div class="project-image">
                 <div class="project-overlay">
                   <h3>올라라 (팀 프로젝트)</h3>
                   <p class="project-period">Team · 프론트엔드</p>
                   <p>
-                    팀 프로젝트로 진행한 웹 서비스로, 화면 구조 설계와 API 연동,
-                    상태 UI 일부를 담당했습니다.
+                    팀 프로젝트로 진행한 웹 서비스로, 화면 구조 설계, API 연동, 상태
+                    UI 일부를 담당했습니다.
                   </p>
-
                   <div class="project-links">
-                    <!-- TODO: 올라라 GitHub/PDF 링크로 교체 -->
+                    <!-- 너가 링크 주면 교체 -->
                     <a
                       href="#"
-                      aria-label="올라라 GitHub 링크(준비중)"
                       class="btn-disabled"
+                      aria-label="올라라 GitHub 링크 준비중"
                       style="pointer-events: none"
+                      >GitHub</a
                     >
-                      GitHub
-                  </a>
                   </div>
                 </div>
               </div>
             </article>
 
-            <!-- 3) Sub - emotion-diary -->
+            <!-- 3) Sub Project (emotion-diary) -->
             <article class="project-card" role="listitem">
               <div class="project-image">
                 <div class="project-overlay">
@@ -190,24 +218,21 @@
                     감정 기록 CRUD 기능을 구현한 프로젝트로, 로딩·빈 상태·에러 상황을
                     분리해 사용자 흐름이 끊기지 않도록 개선했습니다.
                   </p>
-
                   <div class="project-links">
                     <a
                       href="https://vercel.com/baeeunjis-projects/emotion-diary/5XYP82G5SVw6vg4ftKB5VWNYMt2s"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="emotion-diary 라이브로 이동"
+                      >Live</a
                     >
-                      Live
-                    </a>
                     <a
                       href="https://github.com/BAEEUNJi97/emotion-diary"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="emotion-diary GitHub로 이동"
+                      >GitHub</a
                     >
-                      GitHub
-                    </a>
                   </div>
                 </div>
               </div>
@@ -216,7 +241,7 @@
         </div>
       </section>
 
-      <!-- Tech Stack (쓴 것만, 과장/예정 제거) -->
+      <!-- Tech (쓴 것만) -->
       <section id="skills" class="skills" aria-labelledby="skills-title">
         <div class="section-content">
           <h2 id="skills-title" class="section-title">Tech</h2>
@@ -231,7 +256,7 @@
             <article class="skill-card" role="listitem">
               <div class="skill-icon" aria-hidden="true">🧾</div>
               <h3>Language</h3>
-              <p>JavaScript · TypeScript (사용한 프로젝트 기준)</p>
+              <p>JavaScript · TypeScript</p>
             </article>
 
             <article class="skill-card" role="listitem">
@@ -249,7 +274,7 @@
         </div>
       </section>
 
-      <!-- About (5~6줄 컷) -->
+      <!-- About (짧게, 운영 관점) -->
       <section id="about" class="about" aria-labelledby="about-title">
         <div class="section-content">
           <h2 id="about-title" class="section-title">About</h2>
@@ -263,7 +288,7 @@
               </p>
             </div>
 
-            <!-- Personal Info Cards (민감 정보는 선택: 연락처는 이메일만 권장) -->
+            <!-- Personal Info (민감 정보 제거: 생년월일/전화번호 삭제) -->
             <div class="personal-info-grid">
               <div class="info-card">
                 <div class="info-icon-custom user-icon"></div>
@@ -299,9 +324,8 @@
                     href="https://www.linkedin.com/in/eunji-bae-394158335/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    >프로필 보기</a
                   >
-                    프로필 보기
-                  </a>
                 </div>
               </div>
             </div>
@@ -310,7 +334,11 @@
       </section>
 
       <!-- Archiving -->
-      <section id="archiving" class="archiving" aria-labelledby="archiving-title">
+      <section
+        id="archiving"
+        class="archiving"
+        aria-labelledby="archiving-title"
+      >
         <div class="section-content">
           <h2 id="archiving-title" class="section-title">Archiving</h2>
           <div class="archiving-content">
@@ -325,9 +353,8 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="archiving-link"
+                    >GitHub 프로필 보기</a
                   >
-                    GitHub 프로필 보기
-                  </a>
                 </div>
               </div>
 
@@ -341,9 +368,8 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="archiving-link"
+                    >블로그 보기</a
                   >
-                    블로그 보기
-                  </a>
                 </div>
               </div>
             </div>
