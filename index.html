@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ⭐ SEO (최종 확정) -->
+    <!-- SEO -->
     <meta
       name="description"
       content="상태(로딩·에러·빈 화면)와 예외를 분리해 수정 가능한 화면 구조를 설계하는 신입 프론트엔드 개발자 배은지의 포트폴리오입니다."
@@ -15,7 +15,7 @@
     />
     <meta name="author" content="배은지" />
 
-    <!-- ⭐ Open Graph -->
+    <!-- Open Graph -->
     <meta property="og:title" content="배은지 | 신입 프론트엔드 개발자" />
     <meta
       property="og:description"
@@ -42,28 +42,40 @@
   <body>
     <div class="container">
       <!-- Header -->
-      <header class="header">
-        <nav class="nav">
+      <header class="header" role="banner">
+        <nav class="nav" role="navigation" aria-label="메인 네비게이션">
           <div class="logo">
-            <h2><a href="#home">Portfolio</a></h2>
+            <h2><a href="#home" aria-label="홈으로 이동">Portfolio</a></h2>
           </div>
 
-          <ul class="nav-menu">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Tech</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#archiving">Archiving</a></li>
+          <ul class="nav-menu" role="menubar">
+            <li role="none">
+              <a href="#home" role="menuitem">Home</a>
+            </li>
+            <li role="none">
+              <a href="#projects" role="menuitem">Projects</a>
+            </li>
+            <li role="none">
+              <a href="#skills" role="menuitem">Tech</a>
+            </li>
+            <li role="none">
+              <a href="#about" role="menuitem">About</a>
+            </li>
+            <li role="none">
+              <a href="#archiving" role="menuitem">Archiving</a>
+            </li>
           </ul>
 
           <button class="hamburger" aria-expanded="false">
-            <span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
         </nav>
       </header>
 
-      <!-- ⭐ Hero -->
-      <section id="home" class="hero">
+      <!-- Hero -->
+      <section id="home" class="hero" role="main">
         <div class="hero-content">
           <div class="hero-text">
             <h1 class="hero-title">
@@ -73,8 +85,8 @@
             </h1>
 
             <p class="hero-description">
-              로딩·에러·빈 화면을 기준으로 UI를 나누고,
-              기능 확장 시 수정 범위를 줄이는 구조를 만듭니다.
+              로딩·에러·빈 화면을 기준으로 UI 흐름을 나누고,
+              기능 확장 시 수정 범위를 줄이는 구조를 설계합니다.
             </p>
           </div>
 
@@ -83,8 +95,8 @@
               <div class="card-content">
                 <h3>핵심 포인트</h3>
                 <p>
-                  로딩 · 에러 · 빈 화면을 분리해<br />
-                  사용자 흐름을 안정화했습니다.
+                  로딩 · 에러 · 빈 상태 UI를 분리해<br />
+                  사용자 흐름이 끊기지 않도록 구성했습니다.
                 </p>
               </div>
             </div>
@@ -92,29 +104,24 @@
         </div>
       </section>
 
-      <!-- ⭐ Projects -->
+      <!-- Projects -->
       <section id="projects" class="projects">
         <div class="section-content">
           <h2 class="section-title">Projects</h2>
 
           <div class="projects-grid">
-            <!-- Main -->
             <article class="project-card">
               <div class="project-image">
                 <div class="project-overlay">
                   <h3>DB 기반 웹 서비스 (개인)</h3>
                   <p class="project-period">ING · MVP 완성 · 확장 중</p>
-
                   <p>
                     인증·조회·수정 과정에서 반복되는 화면 상태를 기준으로,
-                    UI를 로딩·에러·빈 화면 단위로 분리해
-                    운영 중 수정 범위를 줄이도록 구조를 정리했습니다.
+                    UI를 로딩·에러·빈 화면 단위로 분리해 운영 중 수정 범위를 줄였습니다.
                   </p>
-
                   <p class="project-features">
                     핵심: 상태 UI 분리 · 재사용 컴포넌트화 · 예외 케이스 대응 기준 정리
                   </p>
-
                   <div class="project-links">
                     <a class="btn-disabled">Live</a>
                     <a class="btn-disabled">GitHub</a>
@@ -123,23 +130,18 @@
               </div>
             </article>
 
-            <!-- Team -->
             <article class="project-card">
               <div class="project-image">
                 <div class="project-overlay">
                   <h3>올라 (팀 프로젝트)</h3>
                   <p class="project-period">Team · 프론트엔드</p>
-
                   <p>
                     화면 구조를 먼저 정리한 뒤 API를 연동하고,
-                    로딩·에러·빈 데이터 상태를 UI로 분기해
-                    사용자 흐름이 끊기지 않도록 구성했습니다.
+                    로딩·에러·빈 데이터 상태를 UI로 분기해 사용자 흐름이 멈추지 않도록 구성했습니다.
                   </p>
-
                   <p class="project-features">
                     담당: 화면 구조 설계 · API 연동 · 상태 UI 분기
                   </p>
-
                   <div class="project-links">
                     <a class="btn-disabled">GitHub</a>
                   </div>
@@ -147,22 +149,18 @@
               </div>
             </article>
 
-            <!-- Sub -->
             <article class="project-card">
               <div class="project-image">
                 <div class="project-overlay">
                   <h3>emotion-diary (개인)</h3>
                   <p class="project-period">Sub · CRUD</p>
-
                   <p>
-                    CRUD 흐름에서 로딩·에러·빈 데이터 상태를 분리해,
+                    CRUD 화면에서 로딩·에러·빈 데이터 상태를 분리해,
                     예외 상황에서도 사용자가 다음 행동을 선택할 수 있도록 개선했습니다.
                   </p>
-
                   <p class="project-features">
                     핵심: 상태 UI 분기 · 입력/수정 흐름 정리 · 예외 처리
                   </p>
-
                   <div class="project-links">
                     <a
                       href="https://vercel.com/baeeunjis-projects/emotion-diary/5XYP82G5SVw6vg4ftKB5VWNYMt2s"
@@ -182,62 +180,65 @@
         </div>
       </section>
 
-      <!-- ⭐ Tech -->
+      <!-- Tech -->
       <section id="skills" class="skills">
         <div class="section-content">
           <h2 class="section-title">Tech</h2>
 
           <div class="skills-grid">
             <article class="skill-card">
+              <div class="skill-icon">💻</div>
               <h3>Frontend</h3>
               <p>React</p>
               <p class="skill-sub">
-                상태별 UI를 기준으로 컴포넌트를 구성합니다.
+                상태별 UI(로딩/에러/빈 화면) 분리 기준으로 컴포넌트를 구성합니다.
               </p>
             </article>
 
             <article class="skill-card">
+              <div class="skill-icon">🧾</div>
               <h3>Language</h3>
               <p>JavaScript · TypeScript</p>
               <p class="skill-sub">
-                타입을 명확히 해 수정 비용을 줄입니다.
+                props/상태 타입을 명확히 해 협업·유지보수 시 수정 비용을 줄입니다.
               </p>
             </article>
 
             <article class="skill-card">
+              <div class="skill-icon">🎨</div>
               <h3>Styling</h3>
               <p>CSS · Flexbox · Grid</p>
               <p class="skill-sub">
-                운영 중 변경을 고려해 구조를 설계합니다.
+                운영 중 레이아웃 변경을 고려해 구조(그리드/간격)를 우선 설계합니다.
               </p>
             </article>
 
             <article class="skill-card">
+              <div class="skill-icon">🚀</div>
               <h3>Tooling / Deploy</h3>
               <p>Git · GitHub · Vercel</p>
               <p class="skill-sub">
-                배포 후 이슈를 재현하고 수정할 수 있도록 관리합니다.
+                배포 후 이슈를 재현하고 수정할 수 있도록 작업 흐름을 관리합니다.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      <!-- ⭐ About -->
+      <!-- About -->
       <section id="about" class="about">
         <div class="section-content">
           <h2 class="section-title">About</h2>
-
           <p>
-            수정과 검수가 반복되는 실무 환경에서
+            수정과 검수가 반복되는 실무 환경에서<br />
             결과물은 ‘완성’보다 ‘운영’을 기준으로 만들어야 한다는 걸 배웠습니다.<br /><br />
-            프론트엔드에서도 로딩·에러·빈 화면 같은 상태를 분리해
+            프론트엔드에서도 로딩·에러·빈 화면 같은 상태를 분리해<br />
             기능 확장 시 수정 범위를 줄이는 구조를 먼저 설계합니다.
           </p>
         </div>
       </section>
 
-      <!-- ⭐ Archiving -->
+      <!-- Archiving -->
       <section id="archiving" class="archiving">
         <div class="section-content">
           <h2 class="section-title">Archiving</h2>
