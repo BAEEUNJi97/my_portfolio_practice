@@ -327,14 +327,7 @@ html.is-loaded {
 }
 
 .highlight::after {
-  content: "";
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: #374151;
-  border-radius: 2px;
+  content: none;
 }
 
 .hero-description {
@@ -791,7 +784,8 @@ html.is-loaded {
    ========================= */
 .personal-info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* 데스크톱에서는 4개 카드가 나란히 */
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.6rem;
   margin-top: 2rem;
 }
@@ -1452,6 +1446,10 @@ html.is-loaded {
   .skills-grid {
     grid-template-columns: 1fr;
     gap: 1.2rem;
+  }
+
+  .personal-info-grid {
+    grid-template-columns: 1fr;
   }
 
   .projects-grid,
