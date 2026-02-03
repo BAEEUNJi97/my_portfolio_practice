@@ -1070,6 +1070,21 @@ body::before {
   border-radius: 8px 8px 0 0;
 }
 
+.no-scroll { overflow: hidden; }
+
+/* 헤더 스크롤 상태 */
+.header--scrolled {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.1);
+}
+
+/* reveal 애니메이션 (원하면만) */
+.reveal { opacity: 0; transform: translateY(18px); transition: 0.5s ease; }
+.reveal.reveal--in { opacity: 1; transform: translateY(0); }
+
+/* 로딩(원하면만): 초기에는 html에 opacity 낮추고, 로드 후 is-loaded로 복귀 같은 방식 가능 *
+
 /* Blog Icon */
 .blog-icon::before {
   width: 32px;

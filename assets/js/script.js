@@ -1,239 +1,300 @@
-// 포트폴리오 메인 JavaScript
+// portfolio main JS (clean + accessible + maintainable)
 
-// Mobile Navigation Toggle
-class MobileNavigation {
-  constructor() {
-    this.hamburger = document.querySelector(".hamburger");
-    this.navMenu = document.querySelector(".nav-menu");
-    this.navLinks = document.querySelectorAll(".nav-menu a");
-    this.isOpen = false;
+(() => {
+  "use strict";
 
-    this.init();
-  }
+  // Helpers
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-  init() {
-    if (!this.hamburger || !this.navMenu) return;
+  const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
-    this.hamburger.addEventListener("click", () => this.toggleMenu());
-    this.navLinks.forEach((link) => {
-      link.addEventListener("click", () => this.closeMenu());
-    });
-    document.addEventListener("click", (e) => this.handleOutsideClick(e));
-    document.addEventListener("keydown", (e) => this.handleKeydown(e));
-  }
+  // 1) Mobile Navigation (a11y 강화: focus trap + aria + scroll lock 안정화)
+  class MobileNavigation {
+    constructor() {
+      this.hamburger = $(".hamburger");
+      this.navMenu = $(".nav-menu");
+      this.navLinks = $$(".nav-menu a");
+      this.isOpen = false;
 
-  toggleMenu() {
-    this.isOpen = !this.isOpen;
-    this.hamburger.classList.toggle("active");
-    this.navMenu.classList.toggle("active");
-    this.hamburger.setAttribute("aria-expanded", this.isOpen);
+      // focus trap
+      this.focusable = [];
+      this.firstFocusable = null;
+      this.lastFocusable = null;
+      this.previousActiveElement = null;
 
-    // Prevent body scroll when menu is open
-    document.body.style.overflow = this.isOpen ? "hidden" : "";
-  }
+      this.init();
+    }
 
-  closeMenu() {
-    if (!this.isOpen) return;
+    init() {
+      if (!this.hamburger || !this.navMenu) return;
 
-    this.isOpen = false;
-    this.hamburger.classList.remove("active");
-    this.navMenu.classList.remove("active");
-    this.hamburger.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = "";
-  }
+      // a11y attributes (없으면 추가)
+      if (!this.hamburger.hasAttribute("aria-expanded")) {
+        this.hamburger.setAttribute("aria-expanded", "false");
+      }
+      // aria-controls: navMenu에 id가 없으면 만들어줌
+      if (!this.navMenu.id) this.navMenu.id = "primary-navigation";
+      this.hamburger.setAttribute("aria-controls", this.navMenu.id);
 
-  handleOutsideClick(e) {
-    if (
-      this.isOpen &&
-      !this.hamburger.contains(e.target) &&
-      !this.navMenu.contains(e.target)
-    ) {
-      this.closeMenu();
+      this.hamburger.addEventListener("click", () => this.toggleMenu());
+
+      // 링크 클릭 시 닫기
+      this.navLinks.forEach((link) => {
+        link.addEventListener("click", () => this.closeMenu());
+      });
+
+      // 바깥 클릭 닫기
+      document.addEventListener("click", (e) => this.handleOutsideClick(e));
+
+      // 키보드 제어 (Esc + Tab focus trap)
+      document.addEventListener("keydown", (e) => this.handleKeydown(e));
+    }
+
+    lockScroll(lock) {
+      // body overflow만 바꾸면 iOS에서 튐이 있어서 class 기반이 더 안정적임
+      document.documentElement.classList.toggle("no-scroll", lock);
+      document.body.classList.toggle("no-scroll", lock);
+    }
+
+    cacheFocusable() {
+      // 메뉴 열렸을 때 내부 포커스 가능한 요소만 잡기
+      this.focusable = $$(
+        'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        this.navMenu
+      ).filter((el) => el.offsetParent !== null);
+
+      this.firstFocusable = this.focusable[0] || null;
+      this.lastFocusable = this.focusable[this.focusable.length - 1] || null;
+    }
+
+    openMenu() {
+      if (this.isOpen) return;
+      this.isOpen = true;
+
+      this.previousActiveElement = document.activeElement;
+
+      this.hamburger.classList.add("active");
+      this.navMenu.classList.add("active");
+
+      this.hamburger.setAttribute("aria-expanded", "true");
+
+      this.lockScroll(true);
+
+      // focus trap 준비
+      this.cacheFocusable();
+      // 첫 포커스 이동 (메뉴 내부 링크가 있으면 그쪽)
+      (this.firstFocusable || this.navMenu).focus?.();
+    }
+
+    closeMenu() {
+      if (!this.isOpen) return;
+      this.isOpen = false;
+
+      this.hamburger.classList.remove("active");
+      this.navMenu.classList.remove("active");
+
+      this.hamburger.setAttribute("aria-expanded", "false");
+
+      this.lockScroll(false);
+
+      // 열기 전 포커스로 복귀
+      this.previousActiveElement?.focus?.();
+    }
+
+    toggleMenu() {
+      this.isOpen ? this.closeMenu() : this.openMenu();
+    }
+
+    handleOutsideClick(e) {
+      if (!this.isOpen) return;
+
+      const clickedOutside =
+        !this.hamburger.contains(e.target) && !this.navMenu.contains(e.target);
+
+      if (clickedOutside) this.closeMenu();
+    }
+
+    handleKeydown(e) {
+      if (!this.isOpen) return;
+
+      if (e.key === "Escape") {
+        this.closeMenu();
+        return;
+      }
+
+      // focus trap: Tab / Shift+Tab
+      if (e.key === "Tab" && this.focusable.length) {
+        this.cacheFocusable();
+
+        if (e.shiftKey) {
+          // shift+tab
+          if (document.activeElement === this.firstFocusable) {
+            e.preventDefault();
+            this.lastFocusable.focus();
+          }
+        } else {
+          // tab
+          if (document.activeElement === this.lastFocusable) {
+            e.preventDefault();
+            this.firstFocusable.focus();
+          }
+        }
+      }
     }
   }
 
-  handleKeydown(e) {
-    if (e.key === "Escape" && this.isOpen) {
-      this.closeMenu();
+  // 2) Smooth Scroll (기능 유지 + reduced motion 지원)
+  class SmoothScroll {
+    constructor() {
+      this.header = $(".header");
+      this.init();
     }
-  }
-}
 
-// Smooth scrolling utility
-class SmoothScroll {
-  constructor() {
-    this.init();
-  }
+    init() {
+      // 이벤트 위임으로 깔끔하게 (링크가 늘어나도 OK)
+      document.addEventListener("click", (e) => {
+        const anchor = e.target.closest('a[href^="#"]');
+        if (!anchor) return;
 
-  init() {
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", (e) => this.handleClick(e, anchor));
-    });
-  }
+        const targetId = anchor.getAttribute("href");
+        if (!targetId || targetId === "#") return;
 
-  handleClick(e, anchor) {
-    e.preventDefault();
-    const targetId = anchor.getAttribute("href");
-    const target = document.querySelector(targetId);
+        const target = $(targetId);
+        if (!target) return;
 
-    if (target) {
-      const headerHeight = document.querySelector(".header").offsetHeight;
-      const targetPosition = target.offsetTop - headerHeight - 20;
+        e.preventDefault();
+        this.scrollToTarget(target);
+      });
+    }
+
+    scrollToTarget(target) {
+      const headerHeight = this.header?.offsetHeight ?? 0;
+      const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
 
       window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
+        top,
+        behavior: prefersReducedMotion ? "auto" : "smooth",
       });
     }
   }
-}
 
-// Header scroll effect
-class HeaderScroll {
-  constructor() {
-    this.header = document.querySelector(".header");
-    this.lastScrollY = window.scrollY;
-    this.ticking = false;
+  // 3) Header Scroll Effect (인라인 스타일 제거 -> class 토글)
+  class HeaderScroll {
+    constructor() {
+      this.header = $(".header");
+      this.ticking = false;
+      this.init();
+    }
 
-    this.init();
-  }
+    init() {
+      if (!this.header) return;
 
-  init() {
-    if (!this.header) return;
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!this.ticking) {
+            requestAnimationFrame(() => this.updateHeader());
+            this.ticking = true;
+          }
+        },
+        { passive: true }
+      );
 
-    window.addEventListener("scroll", () => this.handleScroll(), {
-      passive: true,
-    });
-  }
+      // 초기 상태 세팅
+      this.updateHeader();
+    }
 
-  handleScroll() {
-    if (!this.ticking) {
-      requestAnimationFrame(() => this.updateHeader());
-      this.ticking = true;
+    updateHeader() {
+      const scrolled = window.scrollY > 100;
+      this.header.classList.toggle("header--scrolled", scrolled);
+      this.ticking = false;
     }
   }
 
-  updateHeader() {
-    const currentScrollY = window.scrollY;
+  // 4) Scroll Animations (입구용 포폴이라 과한 연출 ↓ + reduced motion 지원)
+  class ScrollAnimations {
+    constructor() {
+      if (prefersReducedMotion) return;
+      if (!("IntersectionObserver" in window)) return;
 
-    if (currentScrollY > 100) {
-      this.header.style.background = "rgba(255, 255, 255, 0.95)";
-      this.header.style.backdropFilter = "blur(20px)";
-      this.header.style.boxShadow = "0 4px 20px rgba(56, 189, 248, 0.1)";
-    } else {
-      this.header.style.background = "rgba(255, 255, 255, 0.8)";
-      this.header.style.backdropFilter = "blur(20px)";
-      this.header.style.boxShadow = "none";
-    }
-
-    this.lastScrollY = currentScrollY;
-    this.ticking = false;
-  }
-}
-
-// Intersection Observer for scroll animations
-class ScrollAnimations {
-  constructor() {
-    this.observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
-    };
-    this.observer = null;
-    this.init();
-  }
-
-  init() {
-    if ("IntersectionObserver" in window) {
       this.observer = new IntersectionObserver(
         (entries) => this.handleIntersection(entries),
-        this.observerOptions
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
       );
-      this.setupAnimations();
+
+      this.init();
     }
-  }
 
-  setupAnimations() {
-    const animatedElements = document.querySelectorAll(
-      ".skill-card, .project-card, .stat-item, .contact-item"
-    );
+    init() {
+      // 너무 많은 요소 다 넣으면 정신없어서, 딱 카드만
+      const animated = $$(".project-card, .skill-card");
 
-    animatedElements.forEach((el) => {
-      el.style.opacity = "0";
-      el.style.transform = "translateY(30px)";
-      el.style.transition = "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
-      this.observer.observe(el);
-    });
-  }
-
-  handleIntersection(entries) {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-        this.observer.unobserve(entry.target);
-      }
-    });
-  }
-}
-
-// Loading animation
-class LoadingAnimation {
-  constructor() {
-    this.init();
-  }
-
-  init() {
-    window.addEventListener("load", () => this.handleLoad());
-  }
-
-  handleLoad() {
-    document.body.style.opacity = "0";
-    document.body.style.transition = "opacity 0.5s ease-in-out";
-
-    requestAnimationFrame(() => {
-      document.body.style.opacity = "1";
-    });
-  }
-}
-
-// CTA Button handler
-class CTAButton {
-  constructor() {
-    this.button = document.querySelector(".cta-button");
-    this.init();
-  }
-
-  init() {
-    if (this.button) {
-      this.button.addEventListener("click", () => this.handleClick());
+      animated.forEach((el) => {
+        el.classList.add("reveal");
+        this.observer.observe(el);
+      });
     }
-  }
 
-  handleClick() {
-    const projectsSection = document.querySelector("#projects");
-    if (projectsSection) {
-      const headerHeight = document.querySelector(".header").offsetHeight;
-      const targetPosition = projectsSection.offsetTop - headerHeight - 20;
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
+    handleIntersection(entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal--in");
+          this.observer.unobserve(entry.target);
+        }
       });
     }
   }
-}
 
-// Initialize all components
-document.addEventListener("DOMContentLoaded", () => {
-  // Navigation
-  new MobileNavigation();
-  new SmoothScroll();
-  new HeaderScroll();
+  // 5) Loading Animation (현재 방식은 load 후 opacity 0 → 화면 깜빡임 가능)
+  // -> JS로 body opacity를 건드리지 말고, CSS로만 처리하는 게 안전함
+  // 여기서는 "로드되면 클래스만 추가"로 변경
+  class LoadingAnimation {
+    constructor() {
+      this.init();
+    }
+    init() {
+      window.addEventListener("load", () => {
+        document.documentElement.classList.add("is-loaded");
+      });
+    }
+  }
 
-  // Animations
-  new ScrollAnimations();
-  new LoadingAnimation();
+  // 6) CTA Button handler (reduced motion 대응)
+  class CTAButton {
+    constructor() {
+      this.button = $(".cta-button");
+      this.header = $(".header");
+      this.init();
+    }
 
-  // Other components
-  new CTAButton();
-});
+    init() {
+      if (!this.button) return;
+      this.button.addEventListener("click", () => this.handleClick());
+    }
+
+    handleClick() {
+      const projectsSection = $("#projects");
+      if (!projectsSection) return;
+
+      const headerHeight = this.header?.offsetHeight ?? 0;
+      const top =
+        projectsSection.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+
+      window.scrollTo({
+        top,
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+      });
+    }
+  }
+
+  // Init
+  document.addEventListener("DOMContentLoaded", () => {
+    new MobileNavigation();
+    new SmoothScroll();
+    new HeaderScroll();
+    new ScrollAnimations();
+    new LoadingAnimation();
+    new CTAButton();
+  });
+})();
