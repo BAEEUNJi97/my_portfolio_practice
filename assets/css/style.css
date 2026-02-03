@@ -466,20 +466,14 @@ html.is-loaded {
   z-index: -1;
 }
 
-.about-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-.about-text p {
-  font-size: 1.1rem;
-  color: #6b7280;
-  margin-bottom: 2.2rem;
+/* About 본문 한 단락을 중앙 정렬 카드처럼 */
+.about .section-content > p {
+  font-size: 1.05rem;
+  color: #4b5563;
+  margin-top: 2.2rem;
   line-height: 1.8;
   text-align: center;
-  max-width: 800px;
+  max-width: 720px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1002,91 +996,39 @@ html.is-loaded {
   box-shadow: 0 22px 44px rgba(56, 189, 248, 0.14);
 }
 
-/* Archiving Custom Icons */
-.archiving-icon-custom {
-  width: 78px;
-  height: 78px;
-  background: #6b7280;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.3rem;
-  position: relative;
-}
-
-.archiving-icon-custom::before {
-  content: "";
-  background: white;
-  position: absolute;
-}
-
-/* GitHub Icon */
-.github-icon::before {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-}
-.github-icon::after {
-  content: "";
-  position: absolute;
-  top: 28px;
-  left: 32px;
-  width: 16px;
-  height: 8px;
-  background: #6b7280;
-  border-radius: 8px 8px 0 0;
-}
-
-/* Blog Icon */
-.blog-icon::before {
-  width: 32px;
-  height: 40px;
-  border-radius: 4px;
-  top: 16px;
-}
-.blog-icon::after {
-  content: "";
-  position: absolute;
-  top: 24px;
-  left: 28px;
-  width: 24px;
-  height: 2px;
-  background: #6b7280;
-  box-shadow: 0 6px 0 #6b7280, 0 12px 0 #6b7280, 0 18px 0 #6b7280;
-}
-
-.archiving-info h3 {
-  color: #374151;
-  font-size: 1.35rem;
+/* 단순 카드 구조에 맞춘 제목/본문/링크 스타일 */
+.archiving-card h3 {
+  color: #111827;
+  font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
 }
 
-.archiving-info p {
+.archiving-card p {
   color: #6b7280;
-  font-size: 1.05rem;
-  margin-bottom: 1.6rem;
+  font-size: 0.98rem;
   line-height: 1.6;
+  margin-bottom: 1.4rem;
 }
 
-.archiving-link {
+.archiving-card a {
   display: inline-block;
-  padding: 0.95rem 1.9rem;
-  background: #374151;
-  color: white;
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  background: #111827;
+  color: #f9fafb;
   text-decoration: none;
-  border-radius: 50px;
   font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.22);
   transition: transform var(--transition), box-shadow var(--transition),
-    background var(--transition);
-  box-shadow: 0 8px 22px rgba(55, 65, 81, 0.18);
+    background var(--transition), color var(--transition);
 }
 
-.archiving-link:hover {
-  background: #1f2937;
+.archiving-card a:hover {
+  background: #020617;
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(55, 65, 81, 0.22);
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.28);
 }
 
 /* =========================
@@ -1227,25 +1169,11 @@ html.is-loaded {
   margin-top: 3rem;
 }
 
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer-info {
-  text-align: center;
-}
-
-.footer-copyright {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-primary);
+.footer p {
   margin: 0;
-  line-height: 1.4;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #4b5563;
 }
 
 /* =========================
