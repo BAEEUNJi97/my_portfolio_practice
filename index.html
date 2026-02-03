@@ -105,83 +105,89 @@
       </section>
 
       <!-- Projects -->
-      <section id="projects" class="projects">
-        <div class="section-content">
-          <h2 class="section-title">Projects</h2>
+     <section id="projects" class="projects">
+  <div class="section-content">
+    <h2 class="section-title">Projects</h2>
 
-          <div class="projects-grid">
-            <article class="project-card">
-              <div class="project-image">
-                <div class="project-overlay">
-                  <h3>DB 기반 웹 서비스 (개인)</h3>
-                  <p class="project-period">ING · MVP 완성 · 확장 중</p>
-                  <p>
-                    인증·조회·수정 과정에서 반복되는 화면 상태를 기준으로,
-                    UI를 로딩·에러·빈 화면 단위로 분리해 운영 중 수정 범위를 줄였습니다.
-                  </p>
-                  <p class="project-features">
-                    핵심: 상태 UI 분리 · 재사용 컴포넌트화 · 예외 케이스 대응 기준 정리
-                  </p>
-                  <div class="project-links">
-                    <a class="btn-disabled">Live</a>
-                    <a class="btn-disabled">GitHub</a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="project-card">
-              <div class="project-image">
-                <div class="project-overlay">
-                  <h3>올라 (팀 프로젝트)</h3>
-                  <p class="project-period">Team · 프론트엔드</p>
-                  <p>
-                    화면 구조를 먼저 정리한 뒤 API를 연동하고,
-                    로딩·에러·빈 데이터 상태를 UI로 분기해 사용자 흐름이 멈추지 않도록 구성했습니다.
-                  </p>
-                  <p class="project-features">
-                    담당: 화면 구조 설계 · API 연동 · 상태 UI 분기
-                  </p>
-                  <div class="project-links">
-                    <a class="btn-disabled"
-                     href="https://github.com/BAEEUNJi97/emotion-diary"
-                      target="_blank"
-                      >GitHub</a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="project-card">
-              <div class="project-image">
-                <div class="project-overlay">
-                  <h3>emotion-diary (개인)</h3>
-                  <p class="project-period">Sub · CRUD</p>
-                  <p>
-                    CRUD 화면에서 로딩·에러·빈 데이터 상태를 분리해,
-                    예외 상황에서도 사용자가 다음 행동을 선택할 수 있도록 개선했습니다.
-                  </p>
-                  <p class="project-features">
-                    핵심: 상태 UI 분기 · 입력/수정 흐름 정리 · 예외 처리
-                  </p>
-                  <div class="project-links">
-                    <a
-                      href="https://vercel.com/baeeunjis-projects/emotion-diary/5XYP82G5SVw6vg4ftKB5VWNYMt2s"
-                      target="_blank"
-                      >Live</a
-                    >
-                    <a
-                      href="https://github.com/BAEEUNJi97/emotion-diary"
-                      target="_blank"
-                      >GitHub</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </article>
+    <div class="projects-grid">
+      <article class="project-card">
+        <div class="project-image">
+          <div class="project-overlay">
+            <h3>DB 기반 웹 서비스 (개인)</h3>
+            <p class="project-period">ING · MVP 구현 완료 · 기능 확장 중</p>
+            <p>
+              인증·조회·수정 흐름을 기준으로 화면 상태를 정의하고,
+              로딩·에러·빈 데이터 상황을 UI 단위로 분리해
+              기능 추가 시 수정 범위를 최소화했습니다.
+            </p>
+            <p class="project-features">
+              핵심: 상태 기준 화면 설계 · 공통 UI 분리 · 운영 중 수정 대응 구조
+            </p>
+            <div class="project-links">
+              <a class="btn-disabled">Live</a>
+              <a class="btn-disabled">GitHub</a>
+            </div>
           </div>
         </div>
-      </section>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image">
+          <div class="project-overlay">
+            <h3>올라 (팀 프로젝트)</h3>
+            <p class="project-period">Team · 프론트엔드</p>
+            <p>
+              화면 구조를 먼저 정리한 뒤 API를 연동하고,
+              로딩·에러·빈 데이터 상태를 분기해
+              사용자 흐름이 중단되지 않도록 화면을 구성했습니다.
+            </p>
+            <p class="project-features">
+              담당: 화면 구조 설계 · API 연동 · 상태별 UI 분기 구현
+            </p>
+            <div class="project-links">
+              <a
+                class="btn-disabled"
+                href="https://github.com/BAEEUNJi97/codelap_allola"
+                target="_blank"
+                >GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image">
+          <div class="project-overlay">
+            <h3>emotion-diary (개인)</h3>
+            <p class="project-period">Sub · CRUD 기반 프로젝트</p>
+            <p>
+              CRUD 화면에서 발생하는 로딩·에러·빈 데이터 상황을 분리해,
+              예외 상황에서도 사용자가 다음 행동을 선택할 수 있도록
+              화면 흐름을 개선했습니다.
+            </p>
+            <p class="project-features">
+              핵심: 상태 UI 분기 · 입력/수정 흐름 정리 · 예외 상황 대응
+            </p>
+            <div class="project-links">
+              <a
+                href="https://vercel.com/baeeunjis-projects/emotion-diary/5XYP82G5SVw6vg4ftKB5VWNYMt2s"
+                target="_blank"
+                >Live</a
+              >
+              <a
+                href="https://github.com/BAEEUNJi97/emotion-diary"
+                target="_blank"
+                >GitHub</a
+              >
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 
       <!-- Tech -->
       <section id="skills" class="skills">
