@@ -3,27 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO (입구 포폴 목적: 운영/유지보수, 상태/예외 강조) -->
     <meta
       name="description"
-      content="배은지의 포트폴리오 - 사용자 중심의 웹 개발자"
+      content="운영·유지보수가 잦은 웹 서비스 환경에서 상태와 예외를 고려해 화면 구조를 설계하는 프론트엔드 주니어 개발자 포트폴리오"
     />
     <meta
       name="keywords"
-      content="포트폴리오, 웹개발자, React, Next.js, JavaScript, TypeScript"
+      content="프론트엔드, 포트폴리오, React, TypeScript, UI, 유지보수, 상태관리, 에러처리"
     />
     <meta name="author" content="배은지" />
-    <meta property="og:title" content="배은지 포트폴리오" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="배은지 | 프론트엔드 주니어 개발자" />
     <meta
       property="og:description"
-      content="사용자 입장에서 생각하는 신입 개발자 배은지의 포트폴리오"
+      content="운영·유지보수가 잦은 웹 서비스 환경에서 상태와 예외를 고려해 화면 구조를 설계합니다."
     />
     <meta property="og:type" content="website" />
-    <title>배은지 포트폴리오 | 웹 개발자</title>
+
+    <title>배은지 | 프론트엔드 주니어 개발자</title>
+
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap"
       rel="stylesheet"
     />
     <link
@@ -32,52 +38,35 @@
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💻%3C/text%3E%3C/svg%3E"
     />
   </head>
+
   <body>
     <div class="container">
-      <!-- Header Section -->
+      <!-- Header -->
       <header class="header" role="banner">
         <nav class="nav" role="navigation" aria-label="메인 네비게이션">
           <div class="logo">
             <h2><a href="#home" aria-label="홈으로 이동">Portfolio</a></h2>
           </div>
+
           <ul class="nav-menu" role="menubar">
             <li role="none">
-              <a href="#home" role="menuitem" aria-label="홈 섹션으로 이동"
-                >Home</a
-              >
+              <a href="#home" role="menuitem">Home</a>
             </li>
             <li role="none">
-              <a href="#about" role="menuitem" aria-label="소개 섹션으로 이동"
-                >About</a
-              >
+              <a href="#projects" role="menuitem">Projects</a>
             </li>
             <li role="none">
-              <a href="#skills" role="menuitem" aria-label="기술 섹션으로 이동"
-                >Skills</a
-              >
+              <a href="#skills" role="menuitem">Tech</a>
             </li>
             <li role="none">
-              <a
-                href="#projects"
-                role="menuitem"
-                aria-label="프로젝트 섹션으로 이동"
-                >Projects</a
-              >
+              <a href="#about" role="menuitem">About</a>
             </li>
             <li role="none">
-              <a
-                href="#archiving"
-                role="menuitem"
-                aria-label="아카이빙 섹션으로 이동"
-                >Archiving</a
-              >
+              <a href="#archiving" role="menuitem">Archiving</a>
             </li>
           </ul>
-          <button
-            class="hamburger"
-            aria-label="메뉴 열기/닫기"
-            aria-expanded="false"
-          >
+
+          <button class="hamburger" aria-label="메뉴 열기/닫기" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -85,46 +74,216 @@
         </nav>
       </header>
 
-      <!-- Hero Section -->
+      <!-- Hero -->
       <section id="home" class="hero" role="main">
         <div class="hero-content">
           <div class="hero-text">
             <h1 class="hero-title">
-              사용자 입장에서 생각하는<br />
-              신입 개발자 <span class="highlight">배은지</span>입니다
+              운영·유지보수가 잦은 웹 서비스 환경에서<br />
+              상태와 예외를 고려해 화면 구조를 설계하는<br />
+              <span class="highlight">프론트엔드 주니어 개발자</span>
             </h1>
+
             <p class="hero-description">
-              만들고 개선하며 배우는 과정을 좋아합니다.<br />
-              사용하기 편한 웹을 만드는 게 목표입니다.
+              기능 구현보다, 수정과 운영을 고려한 구조 설계에 강점이 있습니다.
             </p>
+
+            <!-- CTA: 프로젝트로 이동 -->
             <button class="cta-button" aria-label="프로젝트 섹션으로 이동">
-              프로젝트 보기
+              Projects 보기
             </button>
+
+            <!-- Hero Links (입구 포폴 핵심: GitHub / PDF / Email) -->
+            <div class="social-links" style="margin-top: 1.2rem">
+              <a
+                class="social-link"
+                href="https://github.com/BAEEUNJi97"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub 프로필로 이동"
+              >
+                GitHub
+              </a>
+
+              <!-- PDF 링크는 파일 올리면 교체 -->
+              <a
+                class="social-link"
+                href="#"
+                aria-label="PDF 포트폴리오 링크(준비중)"
+              >
+                PDF (준비중)
+              </a>
+
+              <a class="social-link" href="mailto:eebae0331@gmail.com">
+                Email
+              </a>
+            </div>
           </div>
+
           <div class="hero-image">
             <div class="floating-card">
               <div class="card-content">
-                <h3>웹 개발</h3>
-                <p>React, TypeScript, Supabase</p>
+                <h3>핵심 포인트</h3>
+                <p>로딩 · 에러 · 빈 상태를 분리해 UI 흐름을 안정화</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- About Section -->
+      <!-- Projects (3개 고정: 1)ING 2)올라라 3)emotion-diary -->
+      <section id="projects" class="projects" aria-labelledby="projects-title">
+        <div class="section-content">
+          <h2 id="projects-title" class="section-title">Projects</h2>
+
+          <div class="projects-grid" role="list" aria-label="프로젝트 목록">
+            <!-- 1) Main (ING placeholder) -->
+            <article class="project-card" role="listitem">
+              <div class="project-image">
+                <div class="project-overlay">
+                  <h3>DB 기반 웹 서비스 (개인)</h3>
+                  <p class="project-period">ING · MVP 완성 후 확장 중</p>
+                  <p>
+                    데이터베이스와 연동된 웹 서비스로, 현재 기능 확장 및 구조 개선을
+                    진행 중입니다.
+                  </p>
+                  <p class="project-features">
+                    인증/조회 흐름에서 로딩 · 에러 · 빈 상태 UI를 분리해 구현했습니다.
+                  </p>
+
+                  <div class="project-links">
+                    <button class="btn-disabled" disabled aria-disabled="true">
+                      Live
+                    </button>
+                    <button class="btn-disabled" disabled aria-disabled="true">
+                      GitHub
+                    </button>
+                    <button class="btn-disabled" disabled aria-disabled="true">
+                      PDF
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- 2) Team - 올라라 -->
+            <article class="project-card" role="listitem">
+              <div class="project-image">
+                <div class="project-overlay">
+                  <h3>올라라 (팀 프로젝트)</h3>
+                  <p class="project-period">Team · 프론트엔드</p>
+                  <p>
+                    팀 프로젝트로 진행한 웹 서비스로, 화면 구조 설계와 API 연동,
+                    상태 UI 일부를 담당했습니다.
+                  </p>
+
+                  <div class="project-links">
+                    <!-- TODO: 올라라 GitHub/PDF 링크로 교체 -->
+                    <a
+                      href="#"
+                      aria-label="올라라 GitHub 링크(준비중)"
+                      class="btn-disabled"
+                      style="pointer-events: none"
+                    >
+                      GitHub
+                    </a>
+                    <a
+                      href="#"
+                      aria-label="올라라 PDF 링크(준비중)"
+                      class="btn-disabled"
+                      style="pointer-events: none"
+                    >
+                      PDF
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- 3) Sub - emotion-diary -->
+            <article class="project-card" role="listitem">
+              <div class="project-image">
+                <div class="project-overlay">
+                  <h3>emotion-diary (개인)</h3>
+                  <p class="project-period">Sub · CRUD</p>
+                  <p>
+                    감정 기록 CRUD 기능을 구현한 프로젝트로, 로딩·빈 상태·에러 상황을
+                    분리해 사용자 흐름이 끊기지 않도록 개선했습니다.
+                  </p>
+
+                  <div class="project-links">
+                    <a
+                      href="https://vercel.com/baeeunjis-projects/emotion-diary/5XYP82G5SVw6vg4ftKB5VWNYMt2s"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="emotion-diary 라이브로 이동"
+                    >
+                      Live
+                    </a>
+                    <a
+                      href="https://github.com/BAEEUNJi97/emotion-diary"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="emotion-diary GitHub로 이동"
+                    >
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tech Stack (쓴 것만, 과장/예정 제거) -->
+      <section id="skills" class="skills" aria-labelledby="skills-title">
+        <div class="section-content">
+          <h2 id="skills-title" class="section-title">Tech</h2>
+
+          <div class="skills-grid" role="list" aria-label="기술 스택 목록">
+            <article class="skill-card" role="listitem">
+              <div class="skill-icon" aria-hidden="true">💻</div>
+              <h3>Frontend</h3>
+              <p>React</p>
+            </article>
+
+            <article class="skill-card" role="listitem">
+              <div class="skill-icon" aria-hidden="true">🧾</div>
+              <h3>Language</h3>
+              <p>JavaScript · TypeScript (사용한 프로젝트 기준)</p>
+            </article>
+
+            <article class="skill-card" role="listitem">
+              <div class="skill-icon" aria-hidden="true">🎨</div>
+              <h3>Styling</h3>
+              <p>CSS · Flexbox · Grid</p>
+            </article>
+
+            <article class="skill-card" role="listitem">
+              <div class="skill-icon" aria-hidden="true">🚀</div>
+              <h3>Tooling / Deploy</h3>
+              <p>Git · GitHub · Vercel</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- About (5~6줄 컷) -->
       <section id="about" class="about" aria-labelledby="about-title">
         <div class="section-content">
-          <h2 id="about-title" class="section-title">About Me</h2>
+          <h2 id="about-title" class="section-title">About</h2>
           <div class="about-content">
             <div class="about-text">
               <p>
-                새로운 기능이 필요하면 자료를 찾아보고 <br />
-                작은 예제를 직접 구현하면서 이해를 넓히려고 노력하고 있습니다.
+                이전 실무 환경에서 수정과 검수가 반복되는 업무를 경험하며,<br />
+                결과물이 실제로 운영되는 과정까지 고려하는 방식에 익숙해졌습니다.<br /><br />
+                프론트엔드 개발을 학습하며 화면 구현에 그치지 않고,<br />
+                상태 변화와 수정 가능성을 고려한 구조 설계에 관심을 두고 작업하고 있습니다.
               </p>
             </div>
 
-            <!-- Personal Info Cards -->
+            <!-- Personal Info Cards (민감 정보는 선택: 연락처는 이메일만 권장) -->
             <div class="personal-info-grid">
               <div class="info-card">
                 <div class="info-icon-custom user-icon"></div>
@@ -135,26 +294,10 @@
               </div>
 
               <div class="info-card">
-                <div class="info-icon-custom calendar-icon"></div>
-                <div class="info-content">
-                  <h3>생년월일</h3>
-                  <p>97.03.31</p>
-                </div>
-              </div>
-
-              <div class="info-card">
                 <div class="info-icon-custom location-icon"></div>
                 <div class="info-content">
                   <h3>위치</h3>
-                  <p>서울특별시</p>
-                </div>
-              </div>
-
-              <div class="info-card">
-                <div class="info-icon-custom phone-icon"></div>
-                <div class="info-content">
-                  <h3>연락처</h3>
-                  <p>010-2494-2257</p>
+                  <p>서울</p>
                 </div>
               </div>
 
@@ -162,20 +305,23 @@
                 <div class="info-icon-custom email-icon"></div>
                 <div class="info-content">
                   <h3>이메일</h3>
-                  <p>eebae0331@gmail.com</p>
+                  <p>
+                    <a href="mailto:eebae0331@gmail.com">eebae0331@gmail.com</a>
+                  </p>
                 </div>
               </div>
 
               <div class="info-card">
                 <div class="info-icon-custom linkedin-icon"></div>
                 <div class="info-content">
-                  <h3>링크드인</h3>
+                  <h3>LinkedIn</h3>
                   <a
                     href="https://www.linkedin.com/in/eunji-bae-394158335/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >링크 주소</a
                   >
+                    프로필 보기
+                  </a>
                 </div>
               </div>
             </div>
@@ -183,188 +329,8 @@
         </div>
       </section>
 
-      <!-- Skills Section -->
-      <section id="skills" class="skills" aria-labelledby="skills-title">
-        <div class="section-content">
-          <h2 id="skills-title" class="section-title">Skills</h2>
-          <div class="skills-grid" role="list" aria-label="기술 스택 목록">
-            <!-- 1) Frontend / UI -->
-            <article class="skill-card" role="listitem">
-              <div class="skill-icon" aria-hidden="true">💻</div>
-              <h3>Frontend / UI</h3>
-              <p>HTML · CSS · JavaScript · TypeScript</p>
-              <p>React · Next.js · Tailwind</p>
-            </article>
-
-            <!-- 2) 인터랙션 / UX -->
-            <article class="skill-card" role="listitem">
-              <div class="skill-icon" aria-hidden="true">🧩</div>
-              <h3>인터랙션 / UX</h3>
-              <p>dnd-kit(드래그) · 무한스크롤</p>
-              <p>필터/정렬 · SSR/CSR 이해</p>
-            </article>
-
-            <!-- 3) 데이터 · 인증 · 연동 -->
-            <article class="skill-card" role="listitem">
-              <div class="skill-icon" aria-hidden="true">🔗</div>
-              <h3>데이터 · 인증 · 연동</h3>
-              <p>Supabase(Auth/RLS) · REST API</p>
-              <p>SQL 기초 · Node.js(기초)</p>
-            </article>
-
-            <!-- 4) 배포 · 테스트 · 협업 -->
-            <article class="skill-card" role="listitem">
-              <div class="skill-icon" aria-hidden="true">🚀</div>
-              <h3>배포 · 테스트 · 협업</h3>
-              <p>Vercel · Git/GitHub</p>
-              <p>React Query · Jest · RTL</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Projects Section -->
-      <section id="projects" class="projects" aria-labelledby="projects-title">
-        <div class="section-content">
-          <h2 id="projects-title" class="section-title">Projects</h2>
-          <div class="projects-grid" role="list" aria-label="프로젝트 목록">
-            <!-- 풀럿 -->
-            <article class="project-card" role="listitem">
-              <div class="project-image">
-                <div class="project-overlay">
-                  <h3>풀럿 · 작업보드+플레이리스트</h3>
-                  <p class="project-period">2025.03 – 2025.05 (개인)</p>
-                  <p>
-                    덕질하는 지인분들이랑 아침에 아티스트 노래 틀고 집중 + 일정
-                    정리를 함께 하려는 보드
-                  </p>
-                  <p class="project-tech">
-                    TypeScript · Next.js · Supabase · dnd-kit
-                  </p>
-                  <p class="project-features">
-                    dnd-kit 드래그 · YouTube 플레이리스트 · Auth/RLS
-                  </p>
-                  <div class="project-links">
-                    <a
-                      href="https://flut-delta.vercel.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="풀럿 프로젝트 라이브 사이트로 이동"
-                      >Live</a
-                    >
-                    <a
-                      href="https://github.com/BAEEUNJi97/flut"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="풀럿 프로젝트 GitHub 저장소로 이동"
-                      >GitHub</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <!-- 같이달램 (최신) -->
-            <article class="project-card" role="listitem">
-              <div class="project-image">
-                <div class="project-overlay">
-                  <h3>같이달램 · 모임 서비스</h3>
-                  <p class="project-period">2025.05 – 2025.07 (개인)</p>
-                  <p>
-                    혼자 하기 싫은 날, 동네에서 가볍게 같이 할 활동을 찾는 모임
-                    서비스
-                  </p>
-                  <p class="project-tech">
-                    TypeScript · Next.js · React Query · Tailwind CSS
-                  </p>
-                  <p class="project-features">
-                    카테고리·지역·날짜 필터 · 무한스크롤 · SSR/라우팅
-                  </p>
-                  <div class="project-links">
-                    <a
-                      href="https://gathr-six.vercel.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="같이달램 프로젝트 라이브 사이트로 이동"
-                      >Live</a
-                    >
-                    <a
-                      href="https://github.com/BAEEUNJi97/gathr"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="같이달램 프로젝트 GitHub 저장소로 이동"
-                      >GitHub</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <!-- 가라게 -->
-            <article class="project-card" role="listitem">
-              <div class="project-image">
-                <div class="project-overlay">
-                  <h3>가라게 · 여행 코스 추천</h3>
-                  <p class="project-period">
-                    2024.03.29 – 2024.05.08 (팀 · 프론트엔드)
-                  </p>
-                  <p>
-                    축제·공연 동선에 맛집·시장까지 한 화면에서 보고 코스 빨리
-                    고르는 탐색 웹
-                  </p>
-                  <p class="project-tech">JavaScript · React</p>
-                  <p class="project-features">
-                    '대한민국 구석구석' 분석 후 보완점 반영 · 카테고리 기반 탐색
-                  </p>
-                  <div class="project-links">
-                    <a
-                      href="https://github.com/JUNGSEUNGKIM/project3_frontPage"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="가라게 프로젝트 GitHub 저장소로 이동"
-                      >GitHub</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <!-- 올라 -->
-            <article class="project-card" role="listitem">
-              <div class="project-image">
-                <div class="project-overlay">
-                  <h3>올라 · 100대 명산 커뮤니티</h3>
-                  <p class="project-period">2024 (팀 · 프론트엔드)</p>
-                  <p>
-                    등산 붐 시기에 100대 명산 데이터 수집·정리 중심의 커뮤니티
-                    실험
-                  </p>
-                  <p class="project-tech">Node.js · AWS EC2 · Oracle</p>
-                  <p class="project-features">
-                    코스/후기/날씨 정보 · 검색·페이징 흐름 · 데이터 구조 설계
-                  </p>
-                  <div class="project-links">
-                    <a
-                      href="https://github.com/JUNGSEUNGKIM/codelap_allola"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="올라 프로젝트 GitHub 저장소로 이동"
-                      >GitHub</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Archiving Section -->
-      <section
-        id="archiving"
-        class="archiving"
-        aria-labelledby="archiving-title"
-      >
+      <!-- Archiving -->
+      <section id="archiving" class="archiving" aria-labelledby="archiving-title">
         <div class="section-content">
           <h2 id="archiving-title" class="section-title">Archiving</h2>
           <div class="archiving-content">
@@ -406,12 +372,12 @@
       </section>
     </div>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer class="footer" role="contentinfo">
       <div class="footer-content">
         <div class="footer-info">
           <p class="footer-copyright">
-            © 2025. Bae Eun Ji. All rights reserved. | Thank you for visiting my
+            © 2026. Bae Eun Ji. All rights reserved. | Thank you for visiting my
             portfolio
           </p>
         </div>
