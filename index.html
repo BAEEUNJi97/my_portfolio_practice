@@ -7,11 +7,11 @@
     <!-- SEO -->
     <meta
       name="description"
-      content="상태(로딩·에러·빈 화면)와 예외를 분리해 수정 가능한 화면 구조를 설계하는 신입 프론트엔드 개발자 배은지의 포트폴리오입니다."
+      content="사용 흐름을 기준으로 화면 구조를 정리하며, 수정과 확장을 고려해 UI를 설계하는 신입 프론트엔드 개발자 배은지의 포트폴리오입니다."
     />
     <meta
       name="keywords"
-      content="프론트엔드, 포트폴리오, 신입, React, TypeScript, UI, 유지보수, 상태관리, 에러처리, Vercel, GitHub"
+      content="프론트엔드, 포트폴리오, 신입, React, TypeScript, UI, 유지보수, 화면구조, Vercel, GitHub"
     />
     <meta name="author" content="배은지" />
 
@@ -19,7 +19,7 @@
     <meta property="og:title" content="배은지 | 신입 프론트엔드 개발자" />
     <meta
       property="og:description"
-      content="로딩·에러·빈 화면을 기준으로 UI 상태를 분리하고, 기능 확장 시 수정 범위를 줄이는 화면 구조를 설계합니다."
+      content="사용 흐름을 기준으로 화면 구조를 정리하고, 수정과 확장을 고려해 UI를 설계합니다."
     />
     <meta property="og:type" content="website" />
 
@@ -32,71 +32,34 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💻%3C/text%3E%3C/svg%3E"
-    />
   </head>
 
   <body>
     <div class="container">
-      <!-- Header -->
-      <header class="header" role="banner">
-        <nav class="nav" role="navigation" aria-label="메인 네비게이션">
-          <div class="logo">
-            <h2><a href="#home" aria-label="홈으로 이동">Portfolio</a></h2>
-          </div>
-
-          <ul class="nav-menu" role="menubar">
-            <li role="none">
-              <a href="#home" role="menuitem">Home</a>
-            </li>
-            <li role="none">
-              <a href="#projects" role="menuitem">Projects</a>
-            </li>
-            <li role="none">
-              <a href="#skills" role="menuitem">Tech</a>
-            </li>
-            <li role="none">
-              <a href="#about" role="menuitem">About</a>
-            </li>
-            <li role="none">
-              <a href="#archiving" role="menuitem">Archiving</a>
-            </li>
-          </ul>
-
-          <button class="hamburger" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </nav>
-      </header>
-
       <!-- Hero -->
-      <section id="home" class="hero" role="main">
+      <section id="home" class="hero">
         <div class="hero-content">
           <div class="hero-text">
             <h1 class="hero-title">
-              <span class="highlight">상태·예외 분리</span><br />
-              화면 구조 설계<br />
+              화면 구조부터 정리하는<br />
               <span class="highlight">신입 프론트엔드 개발자</span>
             </h1>
 
             <p class="hero-description">
-              로딩·에러·빈 화면을 기준으로 UI 흐름을 나누고, 기능 확장 시 수정
-              범위를 줄이는 구조를 설계합니다.
+              기능 구현에 바로 들어가기보다<br />
+              사용 흐름과 화면 역할을 먼저 정리해<br />
+              수정과 확장이 쉬운 UI 구조를 만드는 데 집중합니다.
             </p>
           </div>
 
           <div class="hero-image">
             <div class="floating-card">
               <div class="card-content">
-                <h3>핵심 포인트</h3>
+                <h3>작업 기준</h3>
                 <p>
-                  로딩 · 에러 · 빈 상태 UI를 분리해<br />
-                  사용자 흐름이 끊기지 않도록 구성했습니다.
+                  화면 단위로 역할을 나누고,<br />
+                  변경이 들어와도 전체를 건드리지 않도록<br />
+                  구조부터 정리합니다.
                 </p>
               </div>
             </div>
@@ -110,6 +73,7 @@
           <h2 class="section-title">Projects</h2>
 
           <div class="projects-grid">
+            <!-- flut -->
             <article class="project-card">
               <div class="project-image">
                 <div class="project-overlay">
@@ -118,78 +82,62 @@
                     ING · MVP 구현 완료 · 기능 확장 중
                   </p>
                   <p>
-                    인증·조회·수정 흐름을 기준으로 화면 상태를 정의하고,
-                    로딩·에러·빈 데이터 상황을 UI 단위로 분리해 기능 추가 시
-                    수정 범위를 최소화했습니다.
+                    추천 결과가 항상 만족스럽지 않을 수 있다는 점을 전제로,
+                    사용자 입력부터 결과 확인까지의 흐름을 먼저 정리했습니다.
+                    결과가 없거나 실패하더라도 사용자가 다음 행동을 선택할 수 있도록
+                    화면 구조를 구성했습니다.
                   </p>
                   <p class="project-features">
-                    핵심: 상태 기준 화면 설계 · 공통 UI 분리 · 운영 중 수정 대응
-                    구조
+                    포인트: 추천 흐름 정리 · 결과/실패 상황 대응 · 공통 UI 분리
                   </p>
                   <div class="project-links">
-                    <a
-                      href="https://flut-delta.vercel.app/"
-                      target="_blank"
-                      >Live</a
-                    >
-                    <a
-                      href="https://github.com/BAEEUNJi97/flut"
-                      target="_blank"
-                      >GitHub</a
-                    >
+                    <a href="https://flut-delta.vercel.app/" target="_blank">Live</a>
+                    <a href="https://github.com/BAEEUNJi97/flut" target="_blank">GitHub</a>
                   </div>
                 </div>
               </div>
             </article>
 
+            <!-- 올라 -->
             <article class="project-card">
               <div class="project-image">
                 <div class="project-overlay">
                   <h3>올라 — 100대 명산 기록 서비스 (팀 프로젝트)</h3>
                   <p class="project-period">Team · 프론트엔드</p>
                   <p>
-                    화면 구조를 먼저 정리한 뒤 API를 연동하고, 로딩·에러·빈
-                    데이터 상태를 분기해 사용자 흐름이 중단되지 않도록 화면을
-                    구성했습니다.
+                    팀 프로젝트에서 화면 기준이 흔들리지 않도록
+                    화면 단위 역할을 먼저 정리한 뒤 API 연동을 진행했습니다.
+                    데이터 응답 지연이나 실패 상황에서도
+                    사용 흐름이 끊기지 않도록 UI 동선을 유지하는 데 집중했습니다.
                   </p>
                   <p class="project-features">
-                    담당: 화면 구조 설계 · API 연동 · 상태별 UI 분기 구현
+                    담당: 화면 구조 정리 · API 연동 · 상태별 UI 분기
                   </p>
                   <div class="project-links">
-                    <a
-                      href="https://github.com/BAEEUNJi97/codelap_allola"
-                      target="_blank"
-                      >GitHub
-                    </a>
+                    <a href="https://github.com/BAEEUNJi97/codelap_allola" target="_blank">GitHub</a>
                   </div>
                 </div>
               </div>
             </article>
 
+            <!-- emotion-diary -->
             <article class="project-card">
               <div class="project-image">
                 <div class="project-overlay">
                   <h3>emotion-diary (개인)</h3>
                   <p class="project-period">Sub · CRUD 기반 프로젝트</p>
                   <p>
-                    CRUD 화면에서 발생하는 로딩·에러·빈 데이터 상황을 분리해,
-                    예외 상황에서도 사용자가 다음 행동을 선택할 수 있도록 화면
-                    흐름을 개선했습니다.
+                    감정 기록 특성상 입력 중 이탈이나 저장 실패가 잦을 수 있다고 보고,
+                    작성 → 확인 → 저장 흐름을 단계로 나눴습니다.
+                    실패 상황에서도 사용자가 다시 이어서 행동할 수 있도록
+                    화면 흐름을 단순하게 유지했습니다.
                   </p>
                   <p class="project-features">
-                    핵심: 상태 UI 분기 · 입력/수정 흐름 정리 · 예외 상황 대응
+                    포인트: CRUD 흐름 정리 · 입력/저장 단계 분리 · 실패 대응 UI
                   </p>
                   <div class="project-links">
-                    <a
-                      href="https://vercel.com/baeeunjis-projects/emotion-diary/5XYP82G5SVw6vg4ftKB5VWNYMt2s"
-                      target="_blank"
-                      >Live</a
-                    >
-                    <a
-                      href="https://github.com/BAEEUNJi97/emotion-diary"
-                      target="_blank"
-                      >GitHub</a
-                    >
+                    <a href="https://vercel.com/baeeunjis-projects/emotion-diary/5XYP82G5SVw6vg4ftKB5VWNYMt2s" target="_blank">Live</a>
+                    <a href="https://github.com/BAEEUNJi97/emotion-diary" target="_blank">GitHub</a>
                   </div>
                 </div>
               </div>
@@ -205,41 +153,38 @@
 
           <div class="skills-grid">
             <article class="skill-card">
-              <div class="skill-icon">💻</div>
               <h3>Frontend</h3>
               <p>React</p>
               <p class="skill-sub">
-                상태별 UI(로딩/에러/빈 화면) 분리 기준으로 컴포넌트를
-                구성합니다.
+                화면 단위로 책임을 나누고
+                수정이 필요한 부분만 손댈 수 있도록 컴포넌트를 구성합니다.
               </p>
             </article>
 
             <article class="skill-card">
-              <div class="skill-icon">🧾</div>
               <h3>Language</h3>
               <p>JavaScript · TypeScript</p>
               <p class="skill-sub">
-                props/상태 타입을 명확히 해 협업·유지보수 시 수정 비용을
-                줄입니다.
+                데이터 구조를 명확히 해
+                변경 시 영향 범위를 파악하기 쉽게 관리합니다.
               </p>
             </article>
 
             <article class="skill-card">
-              <div class="skill-icon">🎨</div>
               <h3>Styling</h3>
               <p>CSS · Flexbox · Grid</p>
               <p class="skill-sub">
-                운영 중 레이아웃 변경을 고려해 구조(그리드/간격)를 우선
-                설계합니다.
+                콘텐츠 변경을 고려해
+                레이아웃과 간격부터 안정적으로 설계합니다.
               </p>
             </article>
 
             <article class="skill-card">
-              <div class="skill-icon">🚀</div>
               <h3>Tooling / Deploy</h3>
               <p>Git · GitHub · Vercel</p>
               <p class="skill-sub">
-                배포 후 이슈를 재현하고 수정할 수 있도록 작업 흐름을 관리합니다.
+                변경 이력을 관리하며
+                배포 후 수정까지 이어지는 흐름을 경험했습니다.
               </p>
             </article>
           </div>
@@ -250,12 +195,14 @@
       <section id="about" class="about">
         <div class="section-content">
           <h2 class="section-title">About</h2>
-          <p>
-            수정과 검수가 반복되는 실무 환경에서<br />
-            결과물은 ‘완성’보다 ‘운영’을 기준으로 만들어야 한다는 걸
-            배웠습니다.<br /><br />
-            프론트엔드에서도 로딩·에러·빈 화면 같은 상태를 분리해<br />
-            기능 확장 시 수정 범위를 줄이는 구조를 먼저 설계합니다.
+         <p>
+            프로젝트를 진행하며
+            기능 구현 이후에도 수정과 보완이 반복된다는 점을 자연스럽게 경험했습니다.
+            그래서 화면을 만들 때부터
+            운영과 변경을 고려한 구조를 먼저 생각하게 되었습니다.<br /><br />
+            아직은 신입이지만
+            실무 투입 시 빠르게 적응할 수 있도록
+            화면 구조와 수정 흐름을 먼저 이해하는 데 집중하고 있습니다.
           </p>
         </div>
       </section>
@@ -269,28 +216,21 @@
             <div class="archiving-card">
               <h3>GitHub</h3>
               <p>프로젝트 소스코드 및 작업 이력</p>
-              <a href="https://github.com/BAEEUNJi97" target="_blank"
-                >GitHub 프로필 보기</a
-              >
+              <a href="https://github.com/BAEEUNJi97" target="_blank">GitHub 프로필 보기</a>
             </div>
 
             <div class="archiving-card">
               <h3>Blog</h3>
               <p>학습 기록 및 트러블슈팅 정리</p>
-              <a href="https://qormafuf.tistory.com/" target="_blank"
-                >블로그 보기</a
-              >
+              <a href="https://qormafuf.tistory.com/" target="_blank">블로그 보기</a>
             </div>
           </div>
         </div>
       </section>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
       <p>© 2026. Bae Eun Ji. All rights reserved.</p>
     </footer>
-
-    <script src="assets/js/script.js"></script>
   </body>
 </html>
