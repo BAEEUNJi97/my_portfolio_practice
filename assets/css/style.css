@@ -4,8 +4,9 @@
    CSS 변수 정의
    ========================= */
 :root {
-  --font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, sans-serif;
+  --font-family:
+    "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
 
   --primary-color: #38bdf8;
   --primary-dark: #0ea5e9;
@@ -66,7 +67,8 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at 20% 80%,
       rgba(56, 189, 248, 0.08) 0%,
       transparent 50%
@@ -118,7 +120,9 @@ body.no-scroll {
 .reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 .project-card.reveal.reveal--in,
 .skill-card.reveal.reveal--in {
@@ -147,7 +151,9 @@ html.is-loaded {
   border-bottom: 1px solid var(--border-glass);
   z-index: 1000;
   padding: 1rem 0;
-  transition: background var(--transition), box-shadow var(--transition),
+  transition:
+    background var(--transition),
+    box-shadow var(--transition),
     border-color var(--transition);
 }
 
@@ -199,7 +205,9 @@ html.is-loaded {
   color: var(--text-secondary);
   font-weight: 600;
   font-size: 0.95rem;
-  transition: color var(--transition), transform var(--transition),
+  transition:
+    color var(--transition),
+    transform var(--transition),
     background var(--transition);
   position: relative;
   padding: 0.5rem 1rem;
@@ -218,7 +226,9 @@ html.is-loaded {
   border-radius: 25px;
   opacity: 0;
   transform: scale(0.9);
-  transition: opacity var(--transition), transform var(--transition);
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
 }
 
 .nav-menu a:hover {
@@ -252,7 +262,9 @@ html.is-loaded {
     var(--primary-dark)
   );
   margin: 3px 0;
-  transition: transform var(--transition), opacity var(--transition);
+  transition:
+    transform var(--transition),
+    opacity var(--transition);
   border-radius: 2px;
 }
 
@@ -347,7 +359,9 @@ html.is-loaded {
   font-weight: 700;
   border-radius: 50px;
   cursor: pointer;
-  transition: transform var(--transition), box-shadow var(--transition),
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
     background var(--transition);
   animation: fadeInUp 0.8s ease-out 0.35s both;
   box-shadow: 0 16px 32px rgba(55, 65, 81, 0.18);
@@ -376,7 +390,8 @@ html.is-loaded {
   padding: 2.6rem;
   border-radius: 28px;
   animation: cardFloat 4s ease-in-out infinite;
-  box-shadow: 0 22px 44px rgba(125, 211, 252, 0.08),
+  box-shadow:
+    0 22px 44px rgba(125, 211, 252, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   position: relative;
   opacity: 0.85;
@@ -491,7 +506,9 @@ html.is-loaded {
   backdrop-filter: blur(25px);
   border: 1px solid rgba(125, 211, 252, 0.3);
   border-radius: 22px;
-  transition: transform var(--transition), box-shadow var(--transition),
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
     border-color var(--transition);
   position: relative;
   overflow: hidden;
@@ -557,7 +574,9 @@ html.is-loaded {
   padding: 2rem 1.5rem;
   border-radius: 18px;
   text-align: center;
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
   position: relative;
   overflow: hidden;
   opacity: 0.92;
@@ -632,7 +651,9 @@ html.is-loaded {
   border: 1px solid rgba(125, 211, 252, 0.3);
   border-radius: 22px;
   overflow: hidden;
-  transition: transform var(--transition), box-shadow var(--transition),
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
     border-color var(--transition);
   /* 텍스트 길어져도 카드가 깨지지 않도록 고정 height 제거 */
   height: auto;
@@ -668,7 +689,9 @@ html.is-loaded {
   text-align: center;
   color: white;
   opacity: 1;
-  transition: opacity var(--transition), transform var(--transition);
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
   transform: translateY(0);
   z-index: 2;
   padding: 2rem;
@@ -697,7 +720,8 @@ html.is-loaded {
 
 /* 긴 문장 때문에 카드가 지저분해 보이는 것을 방지(지원 브라우저에서만) */
 @supports (-webkit-line-clamp: 1) {
-  .project-overlay p:not(.project-period):not(.project-tech):not(.project-features) {
+  .project-overlay
+    p:not(.project-period):not(.project-tech):not(.project-features) {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
@@ -754,7 +778,9 @@ html.is-loaded {
   border-radius: 14px;
   font-size: 0.9rem;
   font-weight: 700;
-  transition: transform var(--transition), box-shadow var(--transition),
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
     background var(--transition);
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -793,7 +819,9 @@ html.is-loaded {
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 
 .info-card:hover {
@@ -986,7 +1014,9 @@ html.is-loaded {
   border-radius: 22px;
   padding: 2.6rem 2rem;
   text-align: center;
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
   position: relative;
   overflow: hidden;
 }
@@ -1021,8 +1051,11 @@ html.is-loaded {
   font-weight: 600;
   font-size: 0.95rem;
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.22);
-  transition: transform var(--transition), box-shadow var(--transition),
-    background var(--transition), color var(--transition);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition),
+    color var(--transition);
 }
 
 .archiving-card a:hover {
@@ -1077,7 +1110,9 @@ html.is-loaded {
   backdrop-filter: blur(25px);
   border: 1px solid rgba(125, 211, 252, 0.4);
   border-radius: 18px;
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
   opacity: 0.9;
   box-shadow: 0 10px 24px rgba(125, 211, 252, 0.14);
 }
@@ -1141,8 +1176,11 @@ html.is-loaded {
   border-radius: 50px;
   font-weight: 700;
   text-align: center;
-  transition: transform var(--transition), box-shadow var(--transition),
-    background var(--transition), color var(--transition);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition),
+    color var(--transition);
   opacity: 0.9;
   box-shadow: 0 8px 22px rgba(125, 211, 252, 0.14);
 }
