@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/style.css" />
+  <script src="./assets/js/script.js" defer></script>
 </head>
 <body>
 
@@ -93,10 +94,10 @@
               <span class="project-badge badge-ing">진행중</span>
             </div>
           </div>
-          <p class="project-subtitle">작업 관리 보드 + 음악 플레이리스트 웹 · 2025.03 ~</p>
+          <p class="project-subtitle">작업 관리 보드 + 음악 플레이리스트 웹 · 2025.09 ~</p>
           <p class="project-desc">
             음악을 들으며 작업 흐름을 이어갈 수 있도록 칸반 보드와 플레이리스트를 하나의 화면에 통합했습니다.
-            실서비스 수준의 인증, 데이터 권한 관리, 드래그 앤 드롭을 직접 설계하고 구현했습니다.
+            실서비스 수준의 인증, 데이터 권한 관리, 드래그 앤 드롭을 설계하고 구현했습니다.
           </p>
           <div class="project-points">
             <div class="project-point">dnd-kit으로 Drag &amp; Drop 보드/카드 정렬 구현, order_index 기반 순서 유지</div>
@@ -196,7 +197,7 @@
           <p class="project-subtitle">100대 명산 기록 · 커뮤니티 서비스 · 2024.02 – 2024.03 · 프론트엔드 담당</p>
           <p class="project-desc">
             대한민국 100대 명산 정보를 제공하고 등산객들이 후기를 공유하는 커뮤니티 플랫폼입니다.
-            서버 사이드 페이징과 공공데이터 API로 성능을 개선하고, 대댓글 구조로 UX를 보완했습니다.
+            서버 사이드 페이징과 공공데이터 API로 성능을 개선하고 대댓글 구조로 UX를 보완했습니다.
           </p>
           <div class="project-points">
             <div class="project-point">공공데이터 API 활용 명산 정보 제공 및 검색·서버 사이드 페이징 최적화</div>
@@ -287,19 +288,18 @@
       <div class="about-grid">
         <div class="about-text reveal">
           <p>
-            패션 디자이너로 일하다 직접 화면을 만들고 기능이 동작하는 순간에 빠져들었습니다.
-            디자인 현장에서 쌓은 시각적 감각과 사용자 중심 사고를 코드에 그대로 가져왔습니다.
+            디자이너로 일하며 쌓은 시각적 감각과 사용자 중심 사고를 코드에 그대로 가져왔습니다.
           </p>
           <p>
-            React와 Next.js 기반 프로젝트를 통해 UI 구현과 데이터 처리 흐름을 경험하면서,
-            기능 완성 이후에도 수정과 보완이 반복된다는 걸 자연스럽게 체감했습니다.
-            그래서 처음부터 화면 단위 역할을 명확히 나누고, 변경에 강한 구조를 우선하게 되었습니다.
+            React와 Next.js 기반 프로젝트를 통해 UI 구현과 데이터 처리 흐름을 경험하면서
+            기능 완성 이후에도 수정과 보완이 반복된다는 걸 자연스럽게 알게되었습니다.
+            그래서 처음부터 화면 단위 역할을 명확히 나누고 변경에 강한 구조를 우선하게 되었습니다.
           </p>
           <p>
             아직은 신입이지만 실무에 빠르게 녹아들 수 있도록
-            코드잇 프론트엔드 심화 과정을 마치며 실전 역량을 계속 키우고 있습니다.
+            역량을 계속 키우고 있습니다.
           </p>
-          <div style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;">
+          <div class="about-links">
             <a class="btn btn-secondary" href="https://github.com/BAEEUNJi97" target="_blank" rel="noopener">GitHub 프로필</a>
             <a class="btn btn-secondary" href="https://qormafuf.tistory.com/" target="_blank" rel="noopener">기술 블로그</a>
           </div>
@@ -388,41 +388,15 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>© 2026 Bae Eun Ji · Frontend Developer</p>
+      <p class="footer-meta">
+        © 2026 Bae Eun Ji · Frontend Developer
+        <span class="footer-sep">·</span>
+        <span class="visitor">
+          Visitors <strong id="visitor-count" aria-label="누적 방문자 수">—</strong>
+        </span>
+      </p>
     </div>
   </footer>
-
-  <script>
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, entry.target.dataset.delay || 0);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach((el, i) => {
-      el.dataset.delay = (i % 4) * 80;
-      observer.observe(el);
-    });
-
-    // Active nav highlight
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 100) current = s.id;
-      });
-      navLinks.forEach(a => {
-        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
-      });
-    });
-  </script>
 
 </body>
 </html>

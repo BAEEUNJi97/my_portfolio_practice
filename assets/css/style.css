@@ -417,6 +417,13 @@ section {
 }
 .about-text p:last-child { margin-bottom: 0; }
 
+.about-links {
+  margin-top: 28px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .about-career {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -520,6 +527,19 @@ footer p {
   font-size: .72rem;
   color: rgba(255,255,255,.25);
   letter-spacing: .06em;
+}
+
+.footer-meta {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.footer-sep { opacity: .6; }
+.visitor strong {
+  color: rgba(255,255,255,.7);
+  font-weight: 700;
 }
 
 /* ─── ANIMATIONS ─── */
