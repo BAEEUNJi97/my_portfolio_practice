@@ -1,236 +1,982 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>배은지 | 프론트엔드 개발자</title>
+  <meta name="description" content="화면 구조부터 정리하는 신입 프론트엔드 개발자 배은지의 포트폴리오입니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- SEO -->
-    <meta
-      name="description"
-      content="사용 흐름을 기준으로 화면 구조를 정리하며, 수정과 확장을 고려해 UI를 설계하는 신입 프론트엔드 개발자 배은지의 포트폴리오입니다."
-    />
-    <meta
-      name="keywords"
-      content="프론트엔드, 포트폴리오, 신입, React, TypeScript, UI, 유지보수, 화면구조, Vercel, GitHub"
-    />
-    <meta name="author" content="배은지" />
+    :root {
+      --bg: #f5f4f0;
+      --bg2: #edecea;
+      --surface: #ffffff;
+      --border: #dddbd7;
+      --text: #1a1917;
+      --text-sub: #6b6864;
+      --text-muted: #a09d99;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --tag-bg: #f0efeb;
+      --tag-text: #4a4845;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+      --shadow-hover: 0 8px 32px rgba(0,0,0,.10);
+      --nav-h: 64px;
+    }
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="배은지 | 신입 프론트엔드 개발자" />
-    <meta
-      property="og:description"
-      content="사용 흐름을 기준으로 화면 구조를 정리하고, 수정과 확장을 고려해 UI를 설계합니다."
-    />
-    <meta property="og:type" content="website" />
+    html { scroll-behavior: smooth; }
 
-    <title>배은지 | 신입 프론트엔드 개발자</title>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
 
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(245,244,240,.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      display: flex; align-items: center;
+    }
+    .nav-inner {
+      max-width: 960px; margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -.01em;
+    }
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--text-sub);
+      text-decoration: none;
+      letter-spacing: .02em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
 
-  <body>
-    <div class="container">
-      <!-- Hero -->
-      <section id="home" class="hero">
-        <div class="hero-content">
-          <div class="hero-text">
-            <h1 class="hero-title">
-              화면 구조부터 정리하는<br />
-              <span class="highlight">신입 프론트엔드 개발자</span>
-            </h1>
+    /* ─── LAYOUT ─── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-            <p class="hero-description">
-              기능 구현에 바로 들어가기보다<br />
-              사용 흐름과 화면 역할을 먼저 정리해<br />
-              수정과 확장이 쉬운 UI 구조를 만드는 데 집중합니다.
-            </p>
-          </div>
+    section {
+      padding: 96px 0;
+    }
 
-          <div class="hero-image">
-            <div class="floating-card">
-              <div class="card-content">
-                <h3>작업 기준</h3>
-                <p>
-                  화면 단위로 역할을 나누고,<br />
-                  변경이 들어와도 전체를 건드리지 않도록<br />
-                  구조부터 정리합니다.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      max-width: 60px;
+    }
 
-      <!-- Projects -->
-      <section id="projects" class="projects">
-        <div class="section-content">
-          <h2 class="section-title">Projects</h2>
+    /* ─── HERO ─── */
+    #hero {
+      padding-top: calc(var(--nav-h) + 80px);
+      padding-bottom: 80px;
+      min-height: 100vh;
+      display: flex; align-items: center;
+    }
+    .hero-content { max-width: 680px; }
 
-          <div class="projects-grid">
-            <!-- flut -->
-            <article class="project-card">
-              <div class="project-image">
-                <div class="project-overlay">
-                  <h3>flut — 음악 취향 기반 추천 웹 서비스 (개인)</h3>
-                  <p class="project-period">
-                    ING · MVP 구현 완료 · 기능 확장 중
-                  </p>
-                  <p>
-                    추천 결과가 항상 만족스럽지 않을 수 있다는 점을 전제로
-                    사용자 입력부터 결과 확인까지의 흐름을 먼저 정리했습니다.
-                    결과가 없거나 실패하더라도 사용자가 다음 행동을 선택할 수 있도록
-                    화면 구조를 구성했습니다.
-                  </p>
-                  <p class="project-features">
-                    포인트: 추천 흐름 정리 · 결과/실패 상황 대응 · 공통 UI 분리
-                  </p>
-                  <div class="project-links">
-                    <a href="https://flut-delta.vercel.app/" target="_blank">Live</a>
-                    <a href="https://github.com/BAEEUNJi97/flut" target="_blank">GitHub</a>
-                  </div>
-                </div>
-              </div>
-            </article>
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: .8rem;
+      color: var(--accent);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp .6s ease forwards .1s;
+    }
 
-            <!-- 올라 -->
-            <article class="project-card">
-              <div class="project-image">
-                <div class="project-overlay">
-                  <h3>올라 — 100대 명산 기록 서비스 (팀 프로젝트)</h3>
-                  <p class="project-period">Team · 프론트엔드</p>
-                  <p>
-                    팀 프로젝트에서 화면 기준이 흔들리지 않도록
-                    화면 단위 역할을 먼저 정리한 뒤 API 연동을 진행했습니다.
-                    데이터 응답 지연이나 실패 상황에서도
-                    사용 흐름이 끊기지 않도록 UI 동선을 유지하는 데 집중했습니다.
-                  </p>
-                  <p class="project-features">
-                    담당: 화면 구조 정리 · API 연동 · 상태별 UI 분기
-                  </p>
-                  <div class="project-links">
-                    <a href="https://github.com/BAEEUNJi97/codelap_allola" target="_blank">GitHub</a>
-                  </div>
-                </div>
-              </div>
-            </article>
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      color: var(--text);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp .6s ease forwards .2s;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
 
-            <!-- emotion-diary -->
-            <article class="project-card">
-              <div class="project-image">
-                <div class="project-overlay">
-                  <h3>emotion-diary (개인)</h3>
-                  <p class="project-period">Sub · CRUD 기반 프로젝트</p>
-                  <p>
-                    감정 기록 특성상 입력 중 이탈이나 저장 실패가 잦을 수 있다고 보고,
-                    작성 → 확인 → 저장 흐름을 단계로 나눴습니다.
-                    실패 상황에서도 사용자가 다시 이어서 행동할 수 있도록
-                    화면 흐름을 단순하게 유지했습니다.
-                  </p>
-                  <p class="project-features">
-                    포인트: CRUD 흐름 정리 · 입력/저장 단계 분리 · 실패 대응 UI
-                  </p>
-                  <div class="project-links">
-                    <a href="https://vercel.com/baeeunjis-projects/emotion-diary/5XYP82G5SVw6vg4ftKB5VWNYMt2s" target="_blank">Live</a>
-                    <a href="https://github.com/BAEEUNJi97/emotion-diary" target="_blank">GitHub</a>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-sub);
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp .6s ease forwards .35s;
+    }
 
-      <!-- Tech -->
-      <section id="skills" class="skills">
-        <div class="section-content">
-          <h2 class="section-title">Tech</h2>
+    .hero-stack {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp .6s ease forwards .45s;
+    }
+    .stack-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: .75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      padding: 5px 12px;
+      border-radius: 100px;
+      letter-spacing: .02em;
+    }
 
-          <div class="skills-grid">
-            <article class="skill-card">
-              <h3>Frontend</h3>
-              <p>React</p>
-              <p class="skill-sub">
-                화면 단위로 책임을 나누고
-                수정이 필요한 부분만 손댈 수 있도록 컴포넌트를 구성합니다.
-              </p>
-            </article>
+    .hero-links {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .6s ease forwards .55s;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      font-size: .875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all .2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+    }
+    .btn-primary:hover { background: #333; transform: translateY(-1px); }
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--text); transform: translateY(-1px); }
 
-            <article class="skill-card">
-              <h3>Language</h3>
-              <p>JavaScript · TypeScript</p>
-              <p class="skill-sub">
-                데이터 구조를 명확히 해
-                변경 시 영향 범위를 파악하기 쉽게 관리합니다.
-              </p>
-            </article>
+    /* ─── PHILOSOPHY ─── */
+    #philosophy {
+      padding-top: 0;
+      padding-bottom: 64px;
+    }
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .philosophy-item {
+      background: var(--surface);
+      padding: 32px 28px;
+    }
+    .philosophy-num {
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      letter-spacing: .08em;
+    }
+    .philosophy-title {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .philosophy-desc {
+      font-size: .85rem;
+      color: var(--text-sub);
+      line-height: 1.65;
+    }
 
-            <article class="skill-card">
-              <h3>Styling</h3>
-              <p>CSS · Flexbox · Grid</p>
-              <p class="skill-sub">
-                콘텐츠 변경을 고려해
-                레이아웃과 간격부터 안정적으로 설계합니다.
-              </p>
-            </article>
+    /* ─── PROJECTS ─── */
+    #projects { background: var(--bg); }
 
-            <article class="skill-card">
-              <h3>Tooling / Deploy</h3>
-              <p>Git · GitHub · Vercel</p>
-              <p class="skill-sub">
-                변경 이력을 관리하며
-                배포 후 수정까지 이어지는 흐름을 경험했습니다.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
+    .projects-grid {
+      display: grid;
+      gap: 16px;
+    }
 
-      <!-- About -->
-      <section id="about" class="about">
-        <div class="section-content">
-          <h2 class="section-title">About</h2>
-         <p>
-            프로젝트를 진행하며
-            기능 구현 이후에도 수정과 보완이 반복된다는 점을 자연스럽게 경험했습니다.
-            그래서 화면을 만들 때부터
-            운영과 변경을 고려한 구조를 먼저 생각하게 되었습니다.<br /><br />
-            아직은 신입이지만
-            실무 투입 시 빠르게 적응할 수 있도록
-            화면 구조와 수정 흐름을 먼저 이해하는 데 집중하고 있습니다.
-          </p>
-        </div>
-      </section>
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      transition: box-shadow .25s, transform .25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #60a5fa);
+      opacity: 0;
+      transition: opacity .25s;
+    }
+    .project-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+    .project-card:hover::before { opacity: 1; }
 
-      <!-- Archiving -->
-      <section id="archiving" class="archiving">
-        <div class="section-content">
-          <h2 class="section-title">Archiving</h2>
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .project-title-wrap { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .project-name {
+      font-family: 'Fraunces', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: -.01em;
+    }
+    .project-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 100px;
+      border: 1px solid;
+    }
+    .badge-personal { color: var(--accent); border-color: #bfdbfe; background: #eff6ff; }
+    .badge-team { color: #7c3aed; border-color: #ddd6fe; background: #f5f3ff; }
+    .badge-ing { color: #d97706; border-color: #fde68a; background: #fffbeb; }
 
-          <div class="archiving-grid">
-            <div class="archiving-card">
-              <h3>GitHub</h3>
-              <p>프로젝트 소스코드 및 작업 이력</p>
-              <a href="https://github.com/BAEEUNJi97" target="_blank">GitHub 프로필 보기</a>
-            </div>
+    .project-subtitle {
+      font-size: .875rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-family: 'DM Mono', monospace;
+      font-size: .78rem;
+    }
 
-            <div class="archiving-card">
-              <h3>Blog</h3>
-              <p>학습 기록 및 트러블슈팅 정리</p>
-              <a href="https://qormafuf.tistory.com/" target="_blank">블로그 보기</a>
-            </div>
-          </div>
-        </div>
-      </section>
+    .project-desc {
+      font-size: .925rem;
+      color: var(--text-sub);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .project-points {
+      display: flex; flex-direction: column; gap: 6px;
+      margin-bottom: 24px;
+    }
+    .project-point {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: .875rem;
+      color: var(--text-sub);
+    }
+    .project-point::before {
+      content: '—';
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .tech-tags {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-bottom: 24px;
+    }
+    .tech-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: .02em;
+    }
+
+    .project-links {
+      display: flex; gap: 10px;
+    }
+    .project-link {
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex; align-items: center; gap: 4px;
+      padding: 6px 14px;
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius-sm);
+      background: var(--accent-soft);
+      transition: all .2s;
+    }
+    .project-link:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+    .project-link.github {
+      background: var(--tag-bg);
+      color: var(--text-sub);
+      border-color: var(--border);
+    }
+    .project-link.github:hover {
+      background: var(--text);
+      color: white;
+      border-color: var(--text);
+    }
+
+    /* ─── TECH ─── */
+    #tech { background: var(--bg2); }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .tech-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .tech-group-label {
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .tech-items {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .tech-item {
+      font-size: .875rem;
+      color: var(--text-sub);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .tech-item::before {
+      content: '';
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .tech-item strong { color: var(--text); font-weight: 500; }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--bg); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: .95rem;
+      color: var(--text-sub);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-career {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .career-title {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .career-list {
+      display: flex; flex-direction: column;
+    }
+    .career-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .career-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .career-item:first-child { padding-top: 0; }
+    .career-period {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      color: var(--text-muted);
+      letter-spacing: .02em;
+      padding-top: 2px;
+    }
+    .career-name {
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .career-desc {
+      font-size: .8rem;
+      color: var(--text-sub);
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--text);
+      padding: 80px 0;
+    }
+    #contact .section-label { color: rgba(255,255,255,.3); }
+    #contact .section-label::after { background: rgba(255,255,255,.15); }
+
+    .contact-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .contact-heading {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 300;
+      color: white;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+    }
+    .contact-heading em { font-style: italic; color: #93c5fd; }
+
+    .contact-links {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,.7);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: color .2s;
+    }
+    .contact-link:hover { color: white; }
+    .contact-link-icon {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,.08);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem;
+      flex-shrink: 0;
+      transition: background .2s;
+    }
+    .contact-link:hover .contact-link-icon { background: rgba(255,255,255,.15); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--text);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 24px 0;
+      text-align: center;
+    }
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      color: rgba(255,255,255,.25);
+      letter-spacing: .06em;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      section { padding: 72px 0; }
+      .nav-links { display: none; }
+      .philosophy-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .project-card { padding: 24px; }
+      .contact-inner { flex-direction: column; }
+      .tech-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .tech-grid { grid-template-columns: 1fr; }
+      #hero { padding-top: calc(var(--nav-h) + 48px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="#hero">배은지</a>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#tech">Tech</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <footer class="footer">
-      <p>© 2026. Bae Eun Ji. All rights reserved.</p>
-    </footer>
-  </body>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Frontend Developer</p>
+        <h1 class="hero-title">
+          화면 구조부터<br />
+          <em>정리하는</em> 개발자
+        </h1>
+        <p class="hero-desc">
+          기능 구현에 바로 들어가기보다 사용 흐름과 화면 역할을 먼저 정리해,
+          수정과 확장이 쉬운 UI 구조를 만드는 데 집중합니다.
+        </p>
+        <div class="hero-stack">
+          <span class="stack-pill">React</span>
+          <span class="stack-pill">Next.js</span>
+          <span class="stack-pill">TypeScript</span>
+          <span class="stack-pill">Supabase</span>
+          <span class="stack-pill">React Query</span>
+          <span class="stack-pill">Tailwind CSS</span>
+        </div>
+        <div class="hero-links">
+          <a class="btn btn-primary" href="#projects">프로젝트 보기</a>
+          <a class="btn btn-secondary" href="mailto:eebae0331@gmail.com">이메일 보내기</a>
+          <a class="btn btn-secondary" href="https://github.com/BAEEUNJi97" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section id="philosophy">
+    <div class="container">
+      <div class="philosophy-grid reveal">
+        <div class="philosophy-item">
+          <div class="philosophy-num">01</div>
+          <div class="philosophy-title">구조 먼저</div>
+          <div class="philosophy-desc">화면 단위로 역할을 나누고, 변경이 들어와도 전체를 건드리지 않도록 구조부터 정리합니다.</div>
+        </div>
+        <div class="philosophy-item">
+          <div class="philosophy-num">02</div>
+          <div class="philosophy-title">흐름을 끊지 않는 UI</div>
+          <div class="philosophy-desc">데이터 실패나 빈 상태에서도 사용자가 다음 행동을 선택할 수 있도록 화면을 설계합니다.</div>
+        </div>
+        <div class="philosophy-item">
+          <div class="philosophy-num">03</div>
+          <div class="philosophy-title">운영을 고려한 코드</div>
+          <div class="philosophy-desc">기능 구현 이후 반복되는 수정을 경험하며, 처음부터 변경이 쉬운 컴포넌트 구조를 우선합니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label">Projects</p>
+      <div class="projects-grid">
+
+        <!-- 플럿 -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <div class="project-title-wrap">
+              <span class="project-name">플럿 (flut)</span>
+              <span class="project-badge badge-personal">개인</span>
+              <span class="project-badge badge-ing">진행중</span>
+            </div>
+          </div>
+          <p class="project-subtitle">작업 관리 보드 + 음악 플레이리스트 웹 · 2025.03 ~</p>
+          <p class="project-desc">
+            음악을 들으며 작업 흐름을 이어갈 수 있도록 칸반 보드와 플레이리스트를 하나의 화면에 통합했습니다.
+            실서비스 수준의 인증, 데이터 권한 관리, 드래그 앤 드롭을 직접 설계하고 구현했습니다.
+          </p>
+          <div class="project-points">
+            <div class="project-point">dnd-kit으로 Drag &amp; Drop 보드/카드 정렬 구현, order_index 기반 순서 유지</div>
+            <div class="project-point">Supabase RLS로 사용자별 데이터 격리 및 안전한 접근 제어</div>
+            <div class="project-point">middleware.ts 인증 가드 + ErrorBoundary로 예외 상황 사용자 친화적 대응</div>
+            <div class="project-point">SSR + CSR 혼합 구조로 초기 렌더링 속도 및 UX 개선</div>
+          </div>
+          <div class="tech-tags">
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Supabase</span>
+            <span class="tech-tag">dnd-kit</span>
+            <span class="tech-tag">React Query</span>
+            <span class="tech-tag">Tailwind CSS</span>
+            <span class="tech-tag">Vercel</span>
+          </div>
+          <div class="project-links">
+            <a class="project-link" href="https://flut-delta.vercel.app" target="_blank" rel="noopener">↗ Live Demo</a>
+            <a class="project-link github" href="https://github.com/BAEEUNJi97/flut" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+
+        <!-- 같이달램 -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <div class="project-title-wrap">
+              <span class="project-name">같이달램</span>
+              <span class="project-badge badge-personal">개인</span>
+            </div>
+          </div>
+          <p class="project-subtitle">모임 탐색 · 참여 · 리뷰 웹 서비스 · 2025.05 – 2025.07</p>
+          <p class="project-desc">
+            카테고리·날짜·지역 필터와 무한스크롤을 조합해 사용자가 원하는 모임을 빠르게 찾을 수 있는 서비스입니다.
+            Swagger 기반 REST API 연동과 SSR prefetch + CSR 병행 구조로 렌더링 속도와 사용자 경험을 함께 챙겼습니다.
+          </p>
+          <div class="project-points">
+            <div class="project-point">카테고리·날짜·지역 복합 필터 + 무한스크롤로 자연스러운 탐색 흐름 구현</div>
+            <div class="project-point">React Query로 데이터 패칭·캐싱·에러 처리를 일관되게 관리</div>
+            <div class="project-point">SSR prefetch + 클라이언트 상태 병행으로 초기 로딩과 인터랙션 모두 최적화</div>
+            <div class="project-point">폴더/컴포넌트 구조 문서화 및 기능별 README 정리</div>
+          </div>
+          <div class="tech-tags">
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">React Query</span>
+            <span class="tech-tag">Axios</span>
+            <span class="tech-tag">Swagger API</span>
+            <span class="tech-tag">Tailwind CSS</span>
+            <span class="tech-tag">Vercel</span>
+          </div>
+          <div class="project-links">
+            <a class="project-link" href="https://gathr-six.vercel.app" target="_blank" rel="noopener">↗ Live Demo</a>
+            <a class="project-link github" href="https://github.com/BAEEUNJi97/gathr" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+
+        <!-- 가라게 -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <div class="project-title-wrap">
+              <span class="project-name">가라게 (GARAGE)</span>
+              <span class="project-badge badge-team">팀 4인</span>
+            </div>
+          </div>
+          <p class="project-subtitle">여행 코스 추천 웹 서비스 · 2024.03 – 2024.05 · 프론트엔드 담당</p>
+          <p class="project-desc">
+            축제·공연·맛집·시장 등 카테고리별 여행 정보를 공공데이터 OpenAPI로 연동해 제공하는 서비스입니다.
+            실시간 데이터 가공·시각화와 검색 필터 최적화로 탐색 흐름을 단순화했습니다.
+          </p>
+          <div class="project-points">
+            <div class="project-point">공공데이터 OpenAPI 연동, 실시간 데이터 가공·시각화(Chart.js)</div>
+            <div class="project-point">카테고리·지역 기반 검색 필터 강화, 사용자 피드백 반영해 탐색 과정 단순화</div>
+            <div class="project-point">담당: 데이터 연동, 필터링 UI 구성, Axios API 호출 최적화</div>
+          </div>
+          <div class="tech-tags">
+            <span class="tech-tag">React.js</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Axios</span>
+            <span class="tech-tag">Chart.js</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Oracle</span>
+            <span class="tech-tag">AWS EC2</span>
+          </div>
+          <div class="project-links">
+            <a class="project-link github" href="https://github.com/JUNGSEUNGKIM/project3_frontPage" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+
+        <!-- 올라 -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <div class="project-title-wrap">
+              <span class="project-name">올라 (alloola)</span>
+              <span class="project-badge badge-team">팀 4인</span>
+            </div>
+          </div>
+          <p class="project-subtitle">100대 명산 기록 · 커뮤니티 서비스 · 2024.02 – 2024.03 · 프론트엔드 담당</p>
+          <p class="project-desc">
+            대한민국 100대 명산 정보를 제공하고 등산객들이 후기를 공유하는 커뮤니티 플랫폼입니다.
+            서버 사이드 페이징과 공공데이터 API로 성능을 개선하고, 대댓글 구조로 UX를 보완했습니다.
+          </p>
+          <div class="project-points">
+            <div class="project-point">공공데이터 API 활용 명산 정보 제공 및 검색·서버 사이드 페이징 최적화</div>
+            <div class="project-point">계층적 대댓글 구조 구현으로 커뮤니티 가독성 향상</div>
+            <div class="project-point">담당: 자유게시판 CRUD, 댓글·대댓글, 비동기 처리, DB 설계</div>
+          </div>
+          <div class="tech-tags">
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">EJS</span>
+            <span class="tech-tag">jQuery</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Oracle</span>
+            <span class="tech-tag">Nginx</span>
+            <span class="tech-tag">AWS EC2</span>
+          </div>
+          <div class="project-links">
+            <a class="project-link github" href="https://github.com/BAEEUNJi97/codelap_allola" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <div class="container">
+      <p class="section-label">Tech Stack</p>
+      <div class="tech-grid reveal">
+        <div class="tech-group">
+          <div class="tech-group-label">Frontend</div>
+          <div class="tech-items">
+            <div class="tech-item"><strong>React</strong></div>
+            <div class="tech-item"><strong>Next.js 14</strong></div>
+            <div class="tech-item"><strong>TypeScript</strong></div>
+            <div class="tech-item">JavaScript</div>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-label">Styling</div>
+          <div class="tech-items">
+            <div class="tech-item"><strong>Tailwind CSS</strong></div>
+            <div class="tech-item">CSS / Flexbox / Grid</div>
+            <div class="tech-item">Figma (UI 설계)</div>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-label">Data / State</div>
+          <div class="tech-items">
+            <div class="tech-item"><strong>React Query</strong></div>
+            <div class="tech-item"><strong>Supabase</strong></div>
+            <div class="tech-item">Axios</div>
+            <div class="tech-item">Swagger API</div>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-label">Deploy / Infra</div>
+          <div class="tech-items">
+            <div class="tech-item"><strong>Vercel</strong></div>
+            <div class="tech-item">AWS EC2</div>
+            <div class="tech-item">Nginx</div>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-label">Tools</div>
+          <div class="tech-items">
+            <div class="tech-item">Git / GitHub</div>
+            <div class="tech-item">ESLint / Prettier</div>
+            <div class="tech-item">VS Code / Cursor</div>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-label">Basic Knowledge</div>
+          <div class="tech-items">
+            <div class="tech-item">Node.js</div>
+            <div class="tech-item">MySQL / Oracle</div>
+            <div class="tech-item">Python / Flask</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label">About</p>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            패션 디자이너로 일하다 직접 화면을 만들고 기능이 동작하는 순간에 빠져들었습니다.
+            디자인 현장에서 쌓은 시각적 감각과 사용자 중심 사고를 코드에 그대로 가져왔습니다.
+          </p>
+          <p>
+            React와 Next.js 기반 프로젝트를 통해 UI 구현과 데이터 처리 흐름을 경험하면서,
+            기능 완성 이후에도 수정과 보완이 반복된다는 걸 자연스럽게 체감했습니다.
+            그래서 처음부터 화면 단위 역할을 명확히 나누고, 변경에 강한 구조를 우선하게 되었습니다.
+          </p>
+          <p>
+            아직은 신입이지만 실무에 빠르게 녹아들 수 있도록
+            코드잇 프론트엔드 심화 과정을 마치며 실전 역량을 계속 키우고 있습니다.
+          </p>
+          <div style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;">
+            <a class="btn btn-secondary" href="https://github.com/BAEEUNJi97" target="_blank" rel="noopener">GitHub 프로필</a>
+            <a class="btn btn-secondary" href="https://qormafuf.tistory.com/" target="_blank" rel="noopener">기술 블로그</a>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="about-career">
+            <div class="career-title">Education &amp; Career</div>
+            <div class="career-list">
+              <div class="career-item">
+                <div class="career-period">2025.04</div>
+                <div>
+                  <div class="career-name">코드잇 프론트엔드 단기심화</div>
+                  <div class="career-desc">실전 프로젝트 중심 심화 과정</div>
+                </div>
+              </div>
+              <div class="career-item">
+                <div class="career-period">2024.08</div>
+                <div>
+                  <div class="career-name">ICT콤플렉스 RPA 개발자 양성</div>
+                  <div class="career-desc">UiPath 기반 업무 자동화</div>
+                </div>
+              </div>
+              <div class="career-item">
+                <div class="career-period">2023.12</div>
+                <div>
+                  <div class="career-name">코드랩아카데미 AI웹서비스</div>
+                  <div class="career-desc">풀스택 웹 개발 과정 수료</div>
+                </div>
+              </div>
+              <div class="career-item">
+                <div class="career-period">2023.03</div>
+                <div>
+                  <div class="career-name">잡화 디자이너 (메인)</div>
+                  <div class="career-desc">거래처 발굴로 매출 증가 기여</div>
+                </div>
+              </div>
+              <div class="career-item">
+                <div class="career-period">2016.12</div>
+                <div>
+                  <div class="career-name">청강문화산업대 패션디자인</div>
+                  <div class="career-desc">학사 졸업</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-label">Contact</p>
+      <div class="contact-inner">
+        <div>
+          <h2 class="contact-heading">
+            함께 만들어갈<br />
+            <em>팀을 찾고 있어요.</em>
+          </h2>
+        </div>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:eebae0331@gmail.com">
+            <div class="contact-link-icon">✉</div>
+            eebae0331@gmail.com
+          </a>
+          <a class="contact-link" href="https://github.com/BAEEUNJi97" target="_blank" rel="noopener">
+            <div class="contact-link-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            </div>
+            github.com/BAEEUNJi97
+          </a>
+          <a class="contact-link" href="https://www.linkedin.com/in/eunji-bae-394158335/" target="_blank" rel="noopener">
+            <div class="contact-link-icon">in</div>
+            LinkedIn 프로필
+          </a>
+          <a class="contact-link" href="https://qormafuf.tistory.com/" target="_blank" rel="noopener">
+            <div class="contact-link-icon">✍</div>
+            기술 블로그
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Bae Eun Ji · Frontend Developer</p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, entry.target.dataset.delay || 0);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.dataset.delay = (i % 4) * 80;
+      observer.observe(el);
+    });
+
+    // Active nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 100) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
+      });
+    });
+  </script>
+
+</body>
 </html>
